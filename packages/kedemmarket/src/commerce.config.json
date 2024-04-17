@@ -1,0 +1,7 @@
+{
+  "provider": "kedemmarket",
+  "features": {
+    "wishlist": true,
+    "customerAuth": true
+  }
+}

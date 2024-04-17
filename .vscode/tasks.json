@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "packages/kedemmarket",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "build_kedemmarket",
+      "detail": "taskr build"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "packages/commerce",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "build_commerce",
+      "detail": "taskr build"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "site",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "build_site",
+      "detail": "taskr build"
+    },
+    {
+      "label": "Build",
+      "dependsOn": ["build_kedemmarket", "build_site"]
+    }
+  ]
+}

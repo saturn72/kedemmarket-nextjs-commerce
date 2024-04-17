@@ -9,6 +9,7 @@ const prettier = require('prettier')
 const core = require('@vercel/commerce/config')
 
 const PROVIDERS = [
+  '@vercel/commerce-kedemmarket',
   '@vercel/commerce-local',
   '@vercel/commerce-bigcommerce',
   '@vercel/commerce-saleor',
@@ -23,16 +24,17 @@ const PROVIDERS = [
 ]
 
 function getProviderName() {
-  return (
-    process.env.COMMERCE_PROVIDER ||
-    (process.env.BIGCOMMERCE_STOREFRONT_API_URL
-      ? '@vercel/commerce-bigcommerce'
-      : process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-      ? '@vercel/commerce-shopify'
-      : process.env.NEXT_PUBLIC_SWELL_STORE_ID
-      ? '@vercel/commerce-swell'
-      : '@vercel/commerce-local')
-  )
+  return process.env.COMMERCE_PROVIDER || '@vercel/commerce-kedemmarket'
+  //   (
+  //     process.env.BIGCOMMERCE_STOREFRONT_API_URL
+  //       ? '@vercel/commerce-bigcommerce'
+  //       : process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
+  //       ? '@vercel/commerce-shopify'
+  //       : process.env.NEXT_PUBLIC_SWELL_STORE_ID
+  //       ? '@vercel/commerce-swell'
+  //       : '@vercel/commerce-local'
+  //   )
+  // )
 }
 
 function withCommerceConfig(nextConfig = {}) {
