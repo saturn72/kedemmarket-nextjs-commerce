@@ -1,7 +1,7 @@
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
-import { Grid, Marquee, Hero } from '@components/ui'
+import { Grid, Marquee } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
@@ -11,16 +11,33 @@ export async function getStaticProps({
   locales,
 }: GetStaticPropsContext) {
   const config = { locale, locales }
-  const productsPromise = commerce.getAllProducts({
-    variables: { first: 6 },
-    config,
-    preview,
-    // Saleor provider only
-    ...({ featured: true } as any),
-  })
+  // const productsPromise = commerce.getAllProducts({
+  //   variables: { first: 6 },
+  //   config,
+  //   preview,
+  //   // Saleor provider only
+  //   ...({ featured: true } as any),
+  // })
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-  const { products } = await productsPromise
+  //const { products } = await productsPromise
+  const products = [{
+    id: "1",
+    name: 'name_1',
+    description: 'desc_1',
+    descriptionHtml: '<h2>desc_1</h2>',
+    sku: 'sku_1',
+    slug: 'slug_1',
+    path: 'path_1',
+    images: [],
+    variants: [{ id: 'p_var1', name: 'product_var_1', price: 1, listPrice: 123 }],
+    price: {
+      value: 1,
+      currency: 'ש"\ח',
+    },
+    options: [],
+    vendor: 'משק 72'
+  }];
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
 
@@ -59,10 +76,9 @@ export default function Home({
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
-      <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      />
+      {/* <Heros /> */}
+
+      <h1>{products.length}</h1>
       <Grid layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard

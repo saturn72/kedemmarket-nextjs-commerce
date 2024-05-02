@@ -16,6 +16,7 @@ interface Props {
   pages?: Page[]
 }
 
+interface FooterProps { caption: string, uri: string, icon: JSX.Element }
 const links = {
   home:
   {
@@ -37,7 +38,7 @@ const links = {
   },
 }
 
-const FooterButton: FC<{ caption: string, uri: string, icon: JSX.Element }> = ({ caption, uri, icon }) => {
+const FooterButton: FC<FooterProps> = ({ caption, uri, icon }) => {
   return (
     <BottomNavigationAction label={t(caption)} icon={icon} href={uri} />
   )
