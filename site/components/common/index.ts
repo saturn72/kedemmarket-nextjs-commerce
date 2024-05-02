@@ -1,4 +1,4 @@
-export { default as Avatar } from './Avatar'
+export { default as Avatar } from './UserAvatar'
 export { default as FeatureBar } from './FeatureBar'
 export { default as Footer } from './Footer'
 export { default as Layout } from './Layout'

@@ -26,9 +26,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
         </div>
 
         <div className="flex items-center flex-1">
-          <Link href="/" className={s.logo} aria-label="Logo">
-            <Logo />
-          </Link>
           <nav className={s.navMenu}>
             <Link href="/search" className={s.link}>
               All
@@ -40,6 +37,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             ))}
           </nav>
         </div>
+        <Link href="/" className={s.logo} aria-label="Logo">
+          <Logo />
+        </Link>
       </div>
       <div className="flex pb-4 lg:px-6 lg:hidden">
         <Searchbar id="mobile-search" />

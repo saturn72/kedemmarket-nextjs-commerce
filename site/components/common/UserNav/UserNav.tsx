@@ -1,7 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
 import s from './UserNav.module.css'
-import { Avatar } from '@components/common'
 import useCart from '@framework/cart/use-cart'
 import { useUI } from '@components/ui/context'
 import { Heart, Bag, Menu } from '@components/icons'
@@ -15,6 +14,8 @@ import {
 } from '@components/ui'
 
 import type { LineItem } from '@commerce/types/cart'
+import { IconButton } from '@mui/material'
+import UserAvatar from '../UserAvatar'
 
 const countItem = (count: number, item: LineItem) => count + item.quantity
 
@@ -35,17 +36,17 @@ const UserNav: React.FC<{
     <nav className={cn(s.root, className)}>
       <ul className={s.list}>
         <li className={s.mobileMenu}>
-          <Button
+          <IconButton
             className={s.item}
             aria-label="Menu"
-            variant="naked"
             onClick={() => {
               setSidebarView('MOBILE_MENU_VIEW')
               openSidebar()
             }}
           >
+            {/* <MenuIcon /> */}
             <Menu />
-          </Button>
+          </IconButton>
         </li>
         <li className={s.item}>
           <Dropdown>
@@ -55,7 +56,7 @@ const UserNav: React.FC<{
                 className={s.avatarButton}
                 onClick={() => (isCustomerLoggedIn ? null : openModal())}
               >
-                <Avatar />
+                <UserAvatar />
               </button>
             </DropdownTrigger>
             <CustomerMenuContent />
@@ -68,23 +69,6 @@ const UserNav: React.FC<{
             </button>
           </Link>
         </li>
-        <li className={s.item}>
-          <Button
-            className={s.item}
-            variant="naked"
-            onClick={() => {
-              setSidebarView('CART_VIEW')
-              openSidebar()
-            }}
-            aria-label={`Cart items: ${itemsCount}`}
-          >
-            <Bag />
-            {itemsCount > 0 && (
-              <span className={s.bagCount}>{itemsCount}</span>
-            )}
-          </Button>
-        </li>
-
       </ul>
     </nav>
   )
