@@ -11,7 +11,13 @@ const fetchStoreApi =
       headers?: HeadersInit
     }
   ): Promise<T> => {
+    return Promise.resolve({} as T)
+    throw new Error('not implemented')
+    console.log('wwwwwwwww')
+
     const config = getConfig()
+    console.log('ssssssssssssss', config.apiUrl)
+
     let res: Response
 
     try {

@@ -72,6 +72,11 @@ export default function getSiteInfoOperation({
     config?: Partial<KedemMarketConfig>
     preview?: boolean
   } = {}): Promise<T['data']> {
+    return {
+      categories: [],
+      brands: [],
+    }
+
     const cfg = commerce.getConfig(config)
     const { data } = await cfg.storeApiFetch<GetSiteInfoQuery>(query)
     const categories = data.site.categoryTree.map(normalizeCategory)

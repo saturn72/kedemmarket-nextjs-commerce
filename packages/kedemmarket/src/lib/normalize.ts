@@ -3,7 +3,7 @@ import type { Product } from '@vercel/commerce/types/product'
 import type { Cart, LineItem } from '@vercel/commerce/types/cart'
 import type { Category, Brand } from '@vercel/commerce/types/site'
 import type { BigcommerceCart, BCCategory, BCBrand } from '../types'
-import type { ProductNode } from '../api/operations/get-all-products'
+// import type { ProductNode } from '../api/operations/get-all-products'
 import type { definitions } from '../api/definitions/store-content'
 import type { BCWishlist } from '../api/utils/types'
 
