@@ -62,13 +62,16 @@ const UserNav: React.FC<{
             <CustomerMenuContent />
           </Dropdown>
         </li>
-        <li className={s.item}>
-          <Link href="/wishlist">
-            <button onClick={closeSidebarIfPresent} aria-label="Wishlist">
-              <Heart />
-            </button>
-          </Link>
-        </li>
+
+        {isCustomerLoggedIn && (
+          <li className={s.item}>
+            <Link href="/wishlist" legacyBehavior>
+              <a onClick={closeSidebarIfPresent} aria-label="Wishlist">
+                <Heart />
+              </a>
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   )
