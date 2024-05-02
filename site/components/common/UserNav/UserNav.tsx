@@ -34,32 +34,19 @@ const UserNav: React.FC<{
   return (
     <nav className={cn(s.root, className)}>
       <ul className={s.list}>
-        {process.env.COMMERCE_CART_ENABLED && (
-          <li className={s.item}>
-            <Button
-              className={s.item}
-              variant="naked"
-              onClick={() => {
-                setSidebarView('CART_VIEW')
-                openSidebar()
-              }}
-              aria-label={`Cart items: ${itemsCount}`}
-            >
-              <Bag />
-              {itemsCount > 0 && (
-                <span className={s.bagCount}>{itemsCount}</span>
-              )}
-            </Button>
-          </li>
-        )}
-        <li className={s.item}>
-          <Link href="/wishlist">
-            <button onClick={closeSidebarIfPresent} aria-label="Wishlist">
-              <Heart />
-            </button>
-          </Link>
+        <li className={s.mobileMenu}>
+          <Button
+            className={s.item}
+            aria-label="Menu"
+            variant="naked"
+            onClick={() => {
+              setSidebarView('MOBILE_MENU_VIEW')
+              openSidebar()
+            }}
+          >
+            <Menu />
+          </Button>
         </li>
-
         <li className={s.item}>
           <Dropdown>
             <DropdownTrigger>
@@ -74,19 +61,30 @@ const UserNav: React.FC<{
             <CustomerMenuContent />
           </Dropdown>
         </li>
-        <li className={s.mobileMenu}>
+        <li className={s.item}>
+          <Link href="/wishlist">
+            <button onClick={closeSidebarIfPresent} aria-label="Wishlist">
+              <Heart />
+            </button>
+          </Link>
+        </li>
+        <li className={s.item}>
           <Button
             className={s.item}
-            aria-label="Menu"
             variant="naked"
             onClick={() => {
-              setSidebarView('MOBILE_MENU_VIEW')
+              setSidebarView('CART_VIEW')
               openSidebar()
             }}
+            aria-label={`Cart items: ${itemsCount}`}
           >
-            <Menu />
+            <Bag />
+            {itemsCount > 0 && (
+              <span className={s.bagCount}>{itemsCount}</span>
+            )}
           </Button>
         </li>
+
       </ul>
     </nav>
   )
