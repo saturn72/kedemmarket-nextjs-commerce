@@ -1,4 +1,4 @@
-import type { BigcommerceAPI, Provider } from '..'
+import type { KedemmarketAPI, Provider } from '..'
 
 import createEndpoints from '@vercel/commerce/api/endpoints'
 
@@ -22,6 +22,6 @@ const endpoints = {
   'catalog/products': products,
 }
 
-export default function bigcommerceAPI(commerce: BigcommerceAPI) {
+export default function kedemmarketAPI(commerce: KedemmarketAPI) {
   return createEndpoints<Provider>(commerce, endpoints)
 }

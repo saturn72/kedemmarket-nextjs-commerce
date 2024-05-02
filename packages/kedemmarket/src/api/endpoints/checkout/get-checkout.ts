@@ -71,7 +71,7 @@ const getCheckout: CheckoutEndpoint['handlers']['getCheckout'] = async ({
   //          <meta charset="UTF-8">
   //          <meta name="viewport" content="width=device-width, initial-scale=1.0">
   //          <title>Checkout</title>
-  //          <script src="https://checkout-sdk.bigcommerce.com/v1/loader.js"></script>
+  //          <script src="https://checkout-sdk.kedemmarket.com/v1/loader.js"></script>
   //          <script>
   //            window.onload = function() {
   //              checkoutKitLoader.load('checkout-sdk').then(function (service) {

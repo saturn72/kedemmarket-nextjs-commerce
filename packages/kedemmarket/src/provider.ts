@@ -16,7 +16,7 @@ import { handler as useSignup } from './auth/use-signup'
 
 import fetcher from './fetcher'
 
-export const bigcommerceProvider = {
+export const kedemmarketProvider = {
   locale: 'en-us',
   cartCookie: 'bc_cartId',
   fetcher,
@@ -31,4 +31,4 @@ export const bigcommerceProvider = {
   auth: { useLogin, useLogout, useSignup },
 }
 
-export type BigcommerceProvider = typeof bigcommerceProvider
+export type KedemmarketProvider = typeof kedemmarketProvider

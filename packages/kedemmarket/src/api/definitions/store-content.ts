@@ -119,7 +119,7 @@ export interface definitions {
      */
     notes?: string
     /**
-     * Used to identify customers who fall into special sales-tax categories – in particular, those who are fully or partially exempt from paying sales tax. Can be blank, or can contain a single AvaTax code. (The codes are case-sensitive.) Stores that subscribe to BigCommerce’s Avalara Premium integration will use this code to determine how/whether to apply sales tax. Does not affect sales-tax calculations for stores that do not subscribe to Avalara Premium.
+     * Used to identify customers who fall into special sales-tax categories – in particular, those who are fully or partially exempt from paying sales tax. Can be blank, or can contain a single AvaTax code. (The codes are case-sensitive.) Stores that subscribe to Kedemmarket’s Avalara Premium integration will use this code to determine how/whether to apply sales tax. Does not affect sales-tax calculations for stores that do not subscribe to Avalara Premium.
      */
     tax_exempt_category?: string
     /**
@@ -230,7 +230,7 @@ export interface definitions {
      */
     author?: string
     /**
-     * Local path to a thumbnail uploaded to `product_images/` via [WebDav](https://support.bigcommerce.com/s/article/File-Access-WebDAV).
+     * Local path to a thumbnail uploaded to `product_images/` via [WebDav](https://support.kedemmarket.com/s/article/File-Access-WebDAV).
      */
     thumbnail_path?: string
   }

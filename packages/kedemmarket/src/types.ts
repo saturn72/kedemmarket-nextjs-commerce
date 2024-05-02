@@ -9,8 +9,8 @@ export type BCBrand = NonNullable<
 >
 
 // TODO: this type should match:
-// https://developer.bigcommerce.com/api-reference/cart-checkout/server-server-cart-api/cart/getacart#responses
-export type BigcommerceCart = {
+// https://developer.kedemmarket.com/api-reference/cart-checkout/server-server-cart-api/cart/getacart#responses
+export type KedemmarketCart = {
   id: string
   parent_id?: string
   customer_id: number

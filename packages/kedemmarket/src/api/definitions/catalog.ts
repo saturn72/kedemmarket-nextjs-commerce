@@ -9,7 +9,7 @@ export interface definitions {
    */
   productModifier_Base: {
     /**
-     * BigCommerce API, which determines how it will display on the storefront. Acceptable values: `date`, `checkbox`, `file`, `text`, `multi_line_text`, `numbers_only_text`, `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. Required in a /POST.
+     * Kedemmarket API, which determines how it will display on the storefront. Acceptable values: `date`, `checkbox`, `file`, `text`, `multi_line_text`, `numbers_only_text`, `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. Required in a /POST.
      */
     type:
       | 'date'
@@ -61,7 +61,7 @@ export interface definitions {
    */
   productModifier_Post: {
     /**
-     * BigCommerce API, which determines how it will display on the storefront. Acceptable values: `date`, `checkbox`, `file`, `text`, `multi_line_text`, `numbers_only_text`, `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. Required in a /POST.
+     * Kedemmarket API, which determines how it will display on the storefront. Acceptable values: `date`, `checkbox`, `file`, `text`, `multi_line_text`, `numbers_only_text`, `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. Required in a /POST.
      */
     type:
       | 'date'
@@ -264,7 +264,7 @@ export interface definitions {
    */
   productModifier_Put: {
     /**
-     * BigCommerce API, which determines how it will display on the storefront. Acceptable values: `date`, `checkbox`, `file`, `text`, `multi_line_text`, `numbers_only_text`, `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. Required in a /POST.
+     * Kedemmarket API, which determines how it will display on the storefront. Acceptable values: `date`, `checkbox`, `file`, `text`, `multi_line_text`, `numbers_only_text`, `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. Required in a /POST.
      */
     type:
       | 'date'
@@ -1074,7 +1074,7 @@ export interface definitions {
      */
     meta_description?: string
     /**
-     * A valid layout file. (Please refer to [this article](https://support.bigcommerce.com/articles/Public/Creating-Custom-Template-Files/) on creating category files.) This field is writable only for stores with a Blueprint theme applied.
+     * A valid layout file. (Please refer to [this article](https://support.kedemmarket.com/articles/Public/Creating-Custom-Template-Files/) on creating category files.) This field is writable only for stores with a Blueprint theme applied.
      */
     layout_file?: string
     /**
@@ -1574,7 +1574,7 @@ export interface definitions {
    */
   productImage_Base: {
     /**
-     * The local path to the original image file uploaded to BigCommerce.
+     * The local path to the original image file uploaded to Kedemmarket.
      */
     image_file?: string
     /**
@@ -1607,7 +1607,7 @@ export interface definitions {
      */
     product_id?: number
     /**
-     * The local path to the original image file uploaded to BigCommerce.
+     * The local path to the original image file uploaded to Kedemmarket.
      */
     image_file?: string
     /**
@@ -1665,7 +1665,7 @@ export interface definitions {
      */
     product_id?: number
     /**
-     * The local path to the original image file uploaded to BigCommerce.
+     * The local path to the original image file uploaded to Kedemmarket.
      */
     image_file?: string
     /**
@@ -1953,7 +1953,7 @@ export interface definitions {
     newest_variant_date?: string
   }
   /**
-   * Metafield for products, categories, variants, and brands. The max number of metafields allowed on each product, category, variant, or brand is fifty. For more information, see [Platform Limits](https://support.bigcommerce.com/s/article/Platform-Limits) in the Help Center.
+   * Metafield for products, categories, variants, and brands. The max number of metafields allowed on each product, category, variant, or brand is fifty. For more information, see [Platform Limits](https://support.kedemmarket.com/s/article/Platform-Limits) in the Help Center.
    */
   metafield_Base: {
     /**
@@ -2151,7 +2151,7 @@ export interface definitions {
      */
     url?: string
     /**
-     * Returns `true` if the URL has been changed from its default state (the auto-assigned URL that BigCommerce provides).
+     * Returns `true` if the URL has been changed from its default state (the auto-assigned URL that Kedemmarket provides).
      */
     is_customized?: boolean
   }
@@ -2301,7 +2301,7 @@ export interface definitions {
     adjuster_value?: number
   }
   /**
-   * Errors during batch usage for the BigCommerce API.
+   * Errors during batch usage for the Kedemmarket API.
    */
   resp_variantBatchError: {
     batch_errors?: (definitions['error_Base'] & {
@@ -2362,7 +2362,7 @@ export interface definitions {
     errors?: definitions['detailedErrors']
   }
   /**
-   * Error payload for the BigCommerce API.
+   * Error payload for the Kedemmarket API.
    */
   error_Base: {
     /**
@@ -2377,7 +2377,7 @@ export interface definitions {
     instance?: string
   }
   /**
-   * Error payload for the BigCommerce API.
+   * Error payload for the Kedemmarket API.
    */
   errorNotFound: {
     /**
@@ -2417,7 +2417,7 @@ export interface definitions {
     status?: 'active' | 'pending' | 'disabled' | 'expired'
   }
   /**
-   * No-content response for the BigCommerce API.
+   * No-content response for the Kedemmarket API.
    */
   errorNoContent: {
     /**
@@ -2763,7 +2763,7 @@ export interface definitions {
      */
     tax_class_id?: number
     /**
-     * Accepts AvaTax System Tax Codes, which identify products and services that fall into special sales-tax categories. By using these codes, merchants who subscribe to BigCommerce's Avalara Premium integration can calculate sales taxes more accurately. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. For details, please see Avalara's documentation.
+     * Accepts AvaTax System Tax Codes, which identify products and services that fall into special sales-tax categories. By using these codes, merchants who subscribe to Kedemmarket's Avalara Premium integration can calculate sales taxes more accurately. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. For details, please see Avalara's documentation.
      */
     product_tax_code?: string
     /**

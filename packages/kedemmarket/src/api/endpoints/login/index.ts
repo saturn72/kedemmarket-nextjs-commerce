@@ -1,10 +1,10 @@
 import { GetAPISchema, createEndpoint } from '@vercel/commerce/api'
 import loginEndpoint from '@vercel/commerce/api/endpoints/login'
 import type { LoginSchema } from '@vercel/commerce/types/login'
-import type { BigcommerceAPI } from '../..'
+import type { KedemmarketAPI } from '../..'
 import login from './login'
 
-export type LoginAPI = GetAPISchema<BigcommerceAPI, LoginSchema>
+export type LoginAPI = GetAPISchema<KedemmarketAPI, LoginSchema>
 
 export type LoginEndpoint = LoginAPI['endpoint']
 

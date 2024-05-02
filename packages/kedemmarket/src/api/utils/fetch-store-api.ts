@@ -51,7 +51,7 @@ const fetchStoreApi =
 
     if (res.status !== 204 && !isJSON) {
       throw new KedemmarketApiError(
-        `Fetch to Bigcommerce API failed, expected JSON content but found: ${contentType}`,
+        `Fetch to Kedemmarket API failed, expected JSON content but found: ${contentType}`,
         res
       )
     }

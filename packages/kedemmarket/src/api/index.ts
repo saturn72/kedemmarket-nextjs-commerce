@@ -65,7 +65,7 @@ const config: KedemMarketConfig = {
   commerceUrl: apiUrl,
   apiToken: apiUrl,
   customerCookie: 'SHOP_TOKEN',
-  cartCookie: process.env.BIGCOMMERCE_CART_COOKIE ?? 'bc_cartId',
+  cartCookie: process.env.KEDEMMARKET_CART_COOKIE ?? 'bc_cartId',
   cartCookieMaxAge: ONE_DAY * 30,
   fetch: createFetchGraphqlApi(() => getCommerceApi().getConfig()),
   applyLocale: true,
@@ -100,10 +100,10 @@ export type APIs =
   | ProductsAPI
   | WishlistAPI
 
-export type BigcommerceAPI<P extends Provider = Provider> = CommerceAPI<P>
+export type KedemmarketAPI<P extends Provider = Provider> = CommerceAPI<P>
 
 export function getCommerceApi<P extends Provider>(
   customProvider: P = provider as any
-): BigcommerceAPI<P> {
+): KedemmarketAPI<P> {
   return commerceApi(customProvider)
 }

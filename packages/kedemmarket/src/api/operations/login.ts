@@ -48,7 +48,7 @@ export default function loginOperation({
 
     const headers = new Headers()
 
-    // Bigcommerce returns a Set-Cookie header with the auth cookie
+    // Kedemmarket returns a Set-Cookie header with the auth cookie
     let cookie = res.headers.get('Set-Cookie')
 
     if (cookie && typeof cookie === 'string') {

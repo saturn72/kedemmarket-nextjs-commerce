@@ -80,7 +80,7 @@ export interface definitions {
      */
     is_public?: boolean
     /**
-     * The token of the Wishlist. This is created internally within BigCommerce. The Wishlist ID is to be used for external apps. Read-Only
+     * The token of the Wishlist. This is created internally within Kedemmarket. The Wishlist ID is to be used for external apps. Read-Only
      */
     token?: string
     /**

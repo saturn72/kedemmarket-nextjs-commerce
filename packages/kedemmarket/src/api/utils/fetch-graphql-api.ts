@@ -29,7 +29,7 @@ const fetchGraphqlApi: (getConfig: () => KedemMarketConfig) => GraphQLFetcher =
     const json = await res.json()
     if (json.errors) {
       throw new FetcherError({
-        errors: json.errors ?? [{ message: 'Failed to fetch Bigcommerce API' }],
+        errors: json.errors ?? [{ message: 'Failed to fetch Kedemmarket API' }],
         status: res.status,
       })
     }

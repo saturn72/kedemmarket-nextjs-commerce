@@ -20,14 +20,14 @@ async function getSchema(filename) {
 
 const schemas = Object.entries({
   '../api/definitions/catalog.ts':
-    'BigCommerce_Catalog_API.oas2.yml?ref=version%2F20.930',
+    'Kedemmarket_Catalog_API.oas2.yml?ref=version%2F20.930',
   '../api/definitions/store-content.ts':
-    'BigCommerce_Store_Content_API.oas2.yml?ref=version%2F20.930',
+    'Kedemmarket_Store_Content_API.oas2.yml?ref=version%2F20.930',
   '../api/definitions/wishlist.ts':
-    'BigCommerce_Wishlist_API.oas2.yml?ref=version%2F20.930',
+    'Kedemmarket_Wishlist_API.oas2.yml?ref=version%2F20.930',
   // swagger-to-ts is not working for the schema of the cart API
   // '../api/definitions/cart.ts':
-  //   'BigCommerce_Server_to_Server_Cart_API.oas2.yml',
+  //   'Kedemmarket_Server_to_Server_Cart_API.oas2.yml',
 })
 
 async function writeDefinitions() {

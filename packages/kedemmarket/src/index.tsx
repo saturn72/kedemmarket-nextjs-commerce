@@ -2,11 +2,11 @@ import {
   getCommerceProvider,
   useCommerce as useCoreCommerce,
 } from '@vercel/commerce'
-import { bigcommerceProvider, BigcommerceProvider } from './provider'
+import { kedemmarketProvider, KedemmarketProvider } from './provider'
 
-export { bigcommerceProvider }
-export type { BigcommerceProvider }
+export { kedemmarketProvider }
+export type { KedemmarketProvider }
 
-export const CommerceProvider = getCommerceProvider(bigcommerceProvider)
+export const CommerceProvider = getCommerceProvider(kedemmarketProvider)
 
-export const useCommerce = () => useCoreCommerce<BigcommerceProvider>()
+export const useCommerce = () => useCoreCommerce<KedemmarketProvider>()

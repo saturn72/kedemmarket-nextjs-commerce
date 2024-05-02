@@ -1,10 +1,10 @@
 import { GetAPISchema, createEndpoint } from '@vercel/commerce/api'
 import logoutEndpoint from '@vercel/commerce/api/endpoints/logout'
 import type { LogoutSchema } from '@vercel/commerce/types/logout'
-import type { BigcommerceAPI } from '../..'
+import type { KedemmarketAPI } from '../..'
 import logout from './logout'
 
-export type LogoutAPI = GetAPISchema<BigcommerceAPI, LogoutSchema>
+export type LogoutAPI = GetAPISchema<KedemmarketAPI, LogoutSchema>
 
 export type LogoutEndpoint = LogoutAPI['endpoint']
 

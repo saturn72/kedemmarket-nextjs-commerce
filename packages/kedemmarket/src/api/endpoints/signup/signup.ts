@@ -30,7 +30,7 @@ const signup: SignupEndpoint['handlers']['signup'] = async ({
 
     return response
   } catch (error) {
-    // Display all validation errors from BigCommerce in a single error message
+    // Display all validation errors from Kedemmarket in a single error message
     if (error instanceof KedemmarketApiError && error.status >= 400) {
       const message = Object.values(error.data.errors).join('<br />')
       if (message) {
