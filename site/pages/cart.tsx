@@ -3,10 +3,13 @@ import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
-import { Button, Text, Container } from '@components/ui'
+import { Text, Container } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import { useUI } from '@components/ui/context'
+import t from 'locale'
+import routes from '@components/common/routes'
+import { Button } from '@mui/material'
 
 export async function getStaticProps({
   preview,
@@ -56,10 +59,15 @@ export default function Cart() {
               <Bag className="absolute" />
             </span>
             <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-              Your cart is empty
+              {t('yourCartIsEmpty')}
             </h2>
             <p className="text-accent-6 px-10 text-center pt-2">
-              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+              <Button
+                variant='contained'
+                href={routes.uris.store}
+              >
+                {t('backToStore')}
+              </Button>
             </p>
           </div>
         ) : error ? (

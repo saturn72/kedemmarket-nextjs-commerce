@@ -3,12 +3,15 @@ import Link from 'next/link'
 import { FC } from 'react'
 import s from './CartSidebarView.module.css'
 import CartItem from '../CartItem'
-import { Button, Text } from '@components/ui'
+import { Text } from '@components/ui'
 import { useUI } from '@components/ui/context'
 import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
+import t from 'locale'
+import routes from '@components/common/routes'
+import { Button } from '@mui/material'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
@@ -45,10 +48,15 @@ const CartSidebarView: FC = () => {
             <Bag className="absolute" />
           </span>
           <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-            Your cart is empty
+            {t('yourCartIsEmpty')}
           </h2>
           <p className="text-accent-3 px-10 text-center pt-2">
-            Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+            <Button
+              variant='contained'
+              href={routes.uris.store}
+            >
+              {t('backToStore')}
+            </Button>
           </p>
         </div>
       ) : error ? (
@@ -109,15 +117,9 @@ const CartSidebarView: FC = () => {
               <span>{total}</span>
             </div>
             <div>
-              {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
-                <Button Component="a" width="100%" onClick={goToCheckout}>
-                  Proceed to Checkout ({total})
-                </Button>
-              ) : (
-                <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
-                </Button>
-              )}
+              <Button fullWidth onClick={goToCheckout}>
+                Proceed to Checkout ({total})
+              </Button>
             </div>
           </div>
         </>

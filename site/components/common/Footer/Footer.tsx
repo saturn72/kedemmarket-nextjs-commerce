@@ -1,3 +1,4 @@
+import routes from '../routes';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -21,26 +22,26 @@ const links = {
   home:
   {
     caption: 'homePage',
-    uri: '/',
+    uri: routes.uris.home,
     icon: <HomeOutlinedIcon />
   },
   cart:
   {
     caption: 'cart',
-    uri: '/cart',
+    uri: routes.uris.checkout,
     icon: <ShoppingCartCheckoutOutlinedIcon />
   },
   account:
   {
     caption: 'account',
-    uri: '/account',
+    uri: routes.uris.account,
     icon: <AccountCircleOutlinedIcon />
   },
 }
 
 const FooterButton: FC<FooterProps> = ({ caption, uri, icon }) => {
   return (
-    <BottomNavigationAction label={t(caption)} icon={icon} href={uri} />
+    <BottomNavigationAction showLabel={true} label={t(caption)} icon={icon} href={uri} />
   )
 };
 
@@ -49,9 +50,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
   // const rootClassName = cn(s.root, className)
   const [value, setValue] = useState(0);
   return (
-    <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+    <Paper sx={{ zIndex: 1000, position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
       <BottomNavigation
-        showLabels
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
