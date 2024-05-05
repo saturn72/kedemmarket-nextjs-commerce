@@ -9,6 +9,16 @@ const isSwell = provider === '@vercel/commerce-swell'
 const isVendure = provider === '@vercel/commerce-vendure'
 
 module.exports = withCommerceConfig({
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        port: '',
+        pathname: '/photos/**',
+      },
+    ],
+  },
   commerce,
   i18n: {
     locales: ['iw-IL'],

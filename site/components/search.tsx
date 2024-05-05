@@ -102,11 +102,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'categories' || toggleFilter !== true
+              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'categories' || toggleFilter !== true
                   ? 'hidden'
                   : ''
-              }`}
+                }`}
             >
               <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
                 <div
@@ -202,11 +201,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'brands' || toggleFilter !== true
+              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'brands' || toggleFilter !== true
                   ? 'hidden'
                   : ''
-              }`}
+                }`}
             >
               <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
                 <div
@@ -322,8 +320,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
           {data ? (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {data.products.map((product: Product) => (
-                <ProductCard
-                  variant="simple"
+                <ProductCardSimple
                   key={product.path}
                   className="animated fadeIn"
                   product={product}
@@ -376,9 +373,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
             <div
-              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'sort' || toggleFilter !== true ? 'hidden' : ''
-              }`}
+              className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'sort' || toggleFilter !== true ? 'hidden' : ''
+                }`}
             >
               <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
                 <div

@@ -6,6 +6,7 @@ import { ProductCard } from '@components/product'
 import s from './HomeAllProductsGrid.module.css'
 import { getCategoryPath, getDesignerPath } from '@lib/search'
 import { Brand, Category } from '@commerce/types/site'
+import ProductCardSimple from '@components/product/ProductCardSimple'
 
 interface Props {
   categories?: Category[]
@@ -47,10 +48,9 @@ const HomeAllProductsGrid: FC<Props> = ({
       <div className="flex-1">
         <Grid layout="normal">
           {products.map((product) => (
-            <ProductCard
+            <ProductCardSimple
               key={product.path}
               product={product}
-              variant="simple"
               imgProps={{
                 alt: product.name,
                 width: 480,

@@ -10,6 +10,7 @@ import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
+import ProductCardSimple from '../ProductCardSimple'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -68,11 +69,10 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <div className={s.relatedProductsGrid}>
             {relatedProducts.map((p) => (
               <div key={p.path} className="bg-accent-0 border border-accent-2">
-                <ProductCard
+                <ProductCardSimple
                   noNameTag
                   product={p}
                   key={p.path}
-                  variant="simple"
                   className="animated fadeIn"
                   imgProps={{
                     alt: p.name,

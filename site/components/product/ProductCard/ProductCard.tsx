@@ -7,6 +7,7 @@ import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
+import { Card, CardHeader } from '@mui/material'
 
 interface Props {
   className?: string
@@ -38,89 +39,100 @@ const ProductCard: FC<Props> = ({
   )
 
   return (
-    <Link
-      href={`/product/${product.slug}`}
-      className={rootClassName}
-      aria-label={product.name}
-    >
-      {variant === 'slim' && (
-        <>
-          <div className={s.header}>
-            <span>{product.name}</span>
-          </div>
-          {product?.images && (
-            <Image
-              quality="85"
-              src={product.images[0]?.url || placeholderImg}
-              alt={product.name || 'Product Image'}
-              height={320}
-              width={320}
-              {...imgProps}
-            />
-          )}
-        </>
-      )}
-
-      {variant === 'simple' && (
-        <>
-          <WishlistButton
-            className={s.wishlistButton}
-            productId={product.id}
-            variant={product.variants[0]}
-          />
-          {!noNameTag && (
+    <>
+      <Link
+        href={`/product/${product.slug}`}
+        className={rootClassName}
+        aria-label={product.name}
+      >
+        <Card>
+          <CardHeader title={product.name}></CardHeader>
+        </Card>
+      </Link>
+      <Link
+        href={`/product/${product.slug}`}
+        className={rootClassName}
+        aria-label={product.name}
+      >
+        {variant === 'slim' && (
+          <>
             <div className={s.header}>
-              <h3 className={s.name}>
-                <span>{product.name}</span>
-              </h3>
-              <div className={s.price}>
-                {`${price} ${product.price?.currencyCode}`}
-              </div>
+              <span>{product.name}</span>
             </div>
-          )}
-          <div className={s.imageContainer}>
             {product?.images && (
               <Image
-                alt={product.name || 'Product Image'}
-                className={s.productImage}
-                src={product.images[0]?.url || placeholderImg}
-                height={540}
-                width={540}
                 quality="85"
+                src={product.images[0]?.url || placeholderImg}
+                alt={product.name || 'Product Image'}
+                height={320}
+                width={320}
                 {...imgProps}
               />
             )}
-          </div>
-        </>
-      )}
+          </>
+        )}
 
-      {variant === 'default' && (
-        <>
-          <WishlistButton
-            className={s.wishlistButton}
-            productId={product.id}
-            variant={product.variants[0] as any}
-          />
-          <ProductTag
-            name={product.name}
-            price={`${price} ${product.price?.currencyCode}`}
-          />
-          <div className={s.imageContainer}>
-            {product?.images && (
-              <Image
-                alt={product.name || 'Product Image'}
-                className={s.productImage}
-                src={product.images[0]?.url || placeholderImg}
-                height={540}
-                width={540}
-                quality="85"
-                {...imgProps}
-              />
+        {variant === 'simple' && (
+          <>
+            <WishlistButton
+              className={s.wishlistButton}
+              productId={product.id}
+              variant={product.variants[0]}
+            />
+            {!noNameTag && (
+              <div className={s.header}>
+                <h3 className={s.name}>
+                  <span>{product.name}</span>
+                </h3>
+                <div className={s.price}>
+                  {`${price} ${product.price?.currencyCode}`}
+                </div>
+              </div>
             )}
-          </div>
-        </>
-      )}
-    </Link>
+            <div className={s.imageContainer}>
+              {product?.images && (
+                <Image
+                  alt={product.name || 'Product Image'}
+                  className={s.productImage}
+                  src={product.images[0]?.url || placeholderImg}
+                  height={540}
+                  width={540}
+                  quality="85"
+                  {...imgProps}
+                />
+              )}
+            </div>
+          </>
+        )}
+
+        {variant === 'default' && (
+          <>
+            <WishlistButton
+              className={s.wishlistButton}
+              productId={product.id}
+              variant={product.variants[0] as any}
+            />
+            <ProductTag
+              name={product.name}
+              price={`${price} ${product.price?.currencyCode}`}
+            />
+            <div className={s.imageContainer}>
+              {product?.images && (
+                <Image
+                  alt={product.name || 'Product Image'}
+                  className={s.productImage}
+                  src={product.images[0]?.url || placeholderImg}
+                  height={540}
+                  width={540}
+                  quality="85"
+                  {...imgProps}
+                />
+              )}
+            </div>
+          </>
+        )}
+      </Link >
+    </>
   )
 }
 
