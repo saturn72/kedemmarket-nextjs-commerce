@@ -2,29 +2,26 @@ import { FC } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
-import s from './ProductCard.module.css'
+import s from './ProductCardStandAlone.module.css'
 import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
-import { Card, CardHeader } from '@mui/material'
+import AddRemoveFromCart from '@components/cart/AddRemoveFromCart'
 
 interface Props {
   className?: string
   product: Product
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-const ProductCard: FC<Props> = ({
+const ProductCardStandAlone: FC<Props> = ({
   product,
   imgProps,
   className,
-  noNameTag = false,
-  variant = 'default',
 }) => {
   const { price } = usePrice({
     amount: product.price.value,
@@ -34,7 +31,7 @@ const ProductCard: FC<Props> = ({
 
   const rootClassName = cn(
     s.root,
-    { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
+    s.simple,
     className
   )
 
@@ -44,16 +41,20 @@ const ProductCard: FC<Props> = ({
       className={rootClassName}
       aria-label={product.name}
     >
+      <ProductTag
+        name={product.name}
+        price={`${price} ${product.price?.currencyCode}`}
+      />
 
       <WishlistButton
         className={s.wishlistButton}
         productId={product.id}
         variant={product.variants[0] as any}
       />
-      <ProductTag
-        name={product.name}
-        price={`${price} ${product.price?.currencyCode}`}
-      />
+      <AddRemoveFromCart className={s.addRemoveFromCart}
+        productId={product.id} variant={product.variants[0]} />
+
+
       <div className={s.imageContainer}>
         {product?.images && (
           <Image
@@ -71,4 +72,4 @@ const ProductCard: FC<Props> = ({
   )
 }
 
-export default ProductCard
+export default ProductCardStandAlone

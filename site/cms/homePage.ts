@@ -1,5 +1,5 @@
 import { Product } from "@commerce/types/product";
-import { url } from "inspector";
+import { Brand, Category } from "@commerce/types/site";
 
 export async function getHomePageProducts(): Promise<Product[]> {
   const p = [
@@ -197,4 +197,29 @@ export async function getHomePageProducts(): Promise<Product[]> {
   ] satisfies Product[];
 
   return Promise.resolve(p)
+}
+
+export async function getHomePageInfo():Promise<{categories:Category[], brands:Brand[]}>{
+  const res= {
+      categories: [
+        { id: 'cat-1', name: 'category-1', slug: 'cat-1', path: '' },
+        {
+          id: 'cat-2',
+          name: 'category-2',
+          slug: 'cat-2',
+          path: 'category-with-path',
+        },
+      ],
+      brands: [
+        { id: 'brand-1', name: 'brand-1', slug: 'brd-1', path: '' },
+        {
+          id: 'brand-2',
+          name: 'brand-2',
+          slug: 'brd-2',
+          path: 'brand-with-path',
+        },
+      ],
+    };
+
+    return Promise.resolve(res);
 }

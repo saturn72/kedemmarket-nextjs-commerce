@@ -4,8 +4,10 @@ import { ProductCard } from '@components/product'
 import { Grid, Marquee } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { getHomePageProducts } from 'catalog/products'
 import ProductCardSlim from '@components/product/ProductCardSlim'
+import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
+import { getHomePageInfo, getHomePageProducts } from 'cms/homePage'
+import ProductCardStandAlone from '@components/product/ProductCardStandAlone'
 
 export async function getStaticProps({
   preview,
@@ -14,12 +16,11 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = { locale, locales }
   const products = await getHomePageProducts();
+  const { categories, brands } = await getHomePageInfo();
 
   const pagesPromise = commerce.getAllPages({ config, preview })
-  const siteInfoPromise = commerce.getSiteInfo({ config, preview })
 
   const { pages } = await pagesPromise
-  const { categories, brands } = await siteInfoPromise
 
   return {
     props: {
@@ -34,12 +35,14 @@ export async function getStaticProps({
 
 export default function Home({
   products,
+  categories,
+  brands
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Grid variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
+          <ProductCardStandAlone
             key={product.id}
             product={product}
             imgProps={{
@@ -58,7 +61,6 @@ export default function Home({
       </Marquee>
       {/* <Heros /> */}
 
-      <h1>{products.length}</h1>
       <Grid layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
@@ -77,11 +79,11 @@ export default function Home({
           <ProductCardSlim key={product.id} product={product} />
         ))}
       </Marquee>
-      {/* <HomeAllProductsGrid
-        newestProducts={products}
+      <HomeAllProductsGrid
+        products={products}
         categories={categories}
         brands={brands}
-      /> */}
+      />
     </>
   )
 }
