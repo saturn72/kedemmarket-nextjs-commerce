@@ -38,7 +38,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </nav>
         </div>
         <Link href="/" className={s.logo} aria-label="Logo">
-          <Logo />
+          <Logo width="64px" height="64px" />
         </Link>
       </div>
       <div className="flex pb-4 lg:px-6 lg:hidden">

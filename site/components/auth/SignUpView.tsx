@@ -5,7 +5,7 @@ import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
 
-interface Props {}
+interface Props { }
 
 const SignUpView: FC<Props> = () => {
   // Form State

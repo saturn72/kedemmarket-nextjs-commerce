@@ -7,6 +7,7 @@ export default {
   cart: "לתשלום",
   homePage: "דף הבית 🏠",
   kedemMarket:'קדם מרקט',
+  kedemMarketLogo:'קדם מרקט',
   notAvailable:'לא זמין לרכישה',
   yourCartIsEmpty:'אין פריטים בעגלת הקניות 🛒',
 }
