@@ -27,6 +27,13 @@
       "@framework/*": ["..\\packages\\kedemmarket\\src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "components/auth/LoginView.tsx.original"
+  ],
   "exclude": ["node_modules"]
 }

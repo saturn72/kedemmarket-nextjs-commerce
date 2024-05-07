@@ -1,19 +1,24 @@
 import React, { FC, useState } from 'react'
 import cn from 'clsx'
-import { useUI } from '@components/ui'
+import { Button, useUI } from '@components/ui'
 import { Plus, Minus } from '@components/icons'
 import useCustomer from '@framework/customer/use-customer'
 import s from './AddRemoveFromCart.module.css'
 import type { Product, ProductVariant } from '@commerce/types/product'
 import { useAddItem, useCart, useRemoveItem } from '@framework/cart'
+import t from 'locale'
+import CartPlus from '@components/icons/CartPlus'
+
 
 type Props = {
   productId: Product['id']
-  variant: ProductVariant
+  variant?: ProductVariant
+  active?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const AddRemoveFromCart: FC<Props> = ({
   productId,
+  active,
   variant,
   className,
   ...props
@@ -25,14 +30,15 @@ const AddRemoveFromCart: FC<Props> = ({
   const { openModal, setModalView } = useUI()
   const [loading, setLoading] = useState(false)
 
-  // @ts-ignore Wishlist is not always enabled
+  // @ts-ignore cart is not always enabled
   const itemInCart = data?.items?.find(
-    // @ts-ignore Wishlist is not always enabled
-    (item) => item.productId === productId && item.variantId === variant.id
+    // @ts-ignore cart is not always enabled
+    (item) => item.productId === productId && item.variantId === active.id
   )
 
-  const handleCartChange = async (e: any) => {
+  const handleCartChange = async (e: any, action: 'add' | 'remove') => {
     e.preventDefault()
+    console.log("action:", action);
 
     if (loading) return
 
@@ -45,6 +51,7 @@ const AddRemoveFromCart: FC<Props> = ({
     setLoading(true)
 
     try {
+
       if (itemInCart) {
         await removeItem({ id: itemInCart.id! })
       } else {
@@ -62,10 +69,25 @@ const AddRemoveFromCart: FC<Props> = ({
 
   return (
     <>
-      <button
+      <Button
+        aria-label="Add to Cart"
+        type="button"
+        className={cn(s.root, className)}
+        onClick={e => handleCartChange(e, 'add')}
+        // onClick={addToCart}
+        loading={loading}
+        disabled={!active}
+      >
+        {!active
+          ? t('notAvailable')
+          : t('addToCart')}
+        &nbsp;
+        <CartPlus />
+      </Button>
+      {/* <Button
         aria-label="Add to cart"
         className={cn(s.root, className)}
-        onClick={handleCartChange}
+        onClick={e => handleCartChange(e, 'add')}
         {...props}
       >
         <Plus
@@ -73,12 +95,12 @@ const AddRemoveFromCart: FC<Props> = ({
             [s.loading]: loading,
           })}
         />
-      </button>
-      <h1> cart quantity goes here</h1>
-      <button
+      </Button>
+      cart quantity goes here
+      <Button
         aria-label="Remove from cart"
         className={cn(s.root, className)}
-        onClick={handleCartChange}
+        onClick={e => handleCartChange(e, 'remove')}
         {...props}
       >
         <Minus
@@ -86,7 +108,7 @@ const AddRemoveFromCart: FC<Props> = ({
             [s.loading]: loading
           })}
         />
-      </button>
+      </Button > */}
     </>
   )
 }

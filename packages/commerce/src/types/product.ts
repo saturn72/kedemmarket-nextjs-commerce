@@ -93,10 +93,11 @@ export interface Product {
    * The name of the product.
    */
   name: string
+  active?: boolean
   /**
    * Stripped description of the product, single line.
    */
-  description: string
+  description?: string
   /**
    * The description of the product, complete with HTML formatting.
    */

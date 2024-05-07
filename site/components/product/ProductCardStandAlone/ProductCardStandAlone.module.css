@@ -77,11 +77,11 @@
 }
 
 .root .wishlistButton {
-  @apply top-0 left-0 z-30 absolute;
+  @apply top-0 left-0 z-20 absolute;
 }
 
 .root .addRemoveFromCart {
-  @apply bottom-0 right--10 z-30 absolute;
+  @apply top-auto z-30 relative;
 }
 
 /* Variant Simple */

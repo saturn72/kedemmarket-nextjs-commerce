@@ -8,11 +8,14 @@ import useCart from './use-cart'
 export default useAddItem as UseAddItem<typeof handler>
 
 export const handler: MutationHook<AddItemHook> = {
+
   fetchOptions: {
     url: '/api/commerce/cart',
     method: 'POST',
   },
   async fetcher({ input: item, options, fetch }) {
+    console.log("move this to site-no need to abstract this part");
+
     if (
       item.quantity &&
       (!Number.isInteger(item.quantity) || item.quantity! < 1)
@@ -31,15 +34,15 @@ export const handler: MutationHook<AddItemHook> = {
   },
   useHook:
     ({ fetch }) =>
-    () => {
-      const { mutate } = useCart()
-      return useCallback(
-        async function addItem(input) {
-          const data = await fetch({ input })
-          await mutate(data, false)
-          return data
-        },
-        [fetch, mutate]
-      )
-    },
+      () => {
+        const { mutate } = useCart()
+        return useCallback(
+          async function addItem(input) {
+            const data = await fetch({ input })
+            await mutate(data, false)
+            return data
+          },
+          [fetch, mutate]
+        )
+      },
 }
