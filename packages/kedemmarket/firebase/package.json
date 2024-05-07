@@ -1,6 +1,0 @@
-{
-  "name": "firebase emulators",
-  "scripts": {
-    "start": "firebase emulators:start --import=./saved-data --export-on-exit"
-  }
-}

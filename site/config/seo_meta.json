@@ -1,25 +1,25 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
-  "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "title": "קדם מרקט",
+  "titleTemplate": "%s - קדם מרקט",
+  "description": "אתר הבית של קדם מרקט 🏪",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "קדם מרקט | Powered by saturn72.com",
+    "description": "קדם מרקט - https://kedemmarket.co.il",
     "type": "website",
-    "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce",
+    "url": "https://kedemmarket.co.il",
+    "site_name": "קדם מרקט",
     "images": [
       {
         "url": "/card.png",
         "width": "800",
         "height": "600",
-        "alt": "Next.js Commerce"
+        "alt": "קדם מרקט"
       }
     ]
   },
   "twitter": {
-    "handle": "@nextjs",
-    "site": "@nextjs",
+    "handle": "@kedemmarket",
+    "site": "@kedemmarket",
     "cardType": "summary_large_image"
   }
 }
