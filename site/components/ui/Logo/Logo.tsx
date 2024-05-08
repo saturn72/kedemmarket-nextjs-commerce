@@ -1,6 +1,5 @@
 import { Avatar } from '@mui/material'
 import t from 'locale'
-import Image from 'next/image'
 
 const Logo = ({ className = '', ...props }) => (
   <>

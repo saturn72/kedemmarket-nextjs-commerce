@@ -8,33 +8,8 @@ const merge = require('deepmerge')
 const prettier = require('prettier')
 const core = require('@vercel/commerce/config')
 
-const PROVIDERS = [
-  '@vercel/commerce-kedemmarket',
-  '@vercel/commerce-local',
-  '@vercel/commerce-bigcommerce',
-  '@vercel/commerce-saleor',
-  '@vercel/commerce-shopify',
-  '@vercel/commerce-swell',
-  '@vercel/commerce-vendure',
-  '@vercel/commerce-ordercloud',
-  '@vercel/commerce-kibocommerce',
-  '@vercel/commerce-spree',
-  '@vercel/commerce-commercejs',
-  '@vercel/commerce-sfcc',
-]
-
 function getProviderName() {
-  return process.env.COMMERCE_PROVIDER || '@vercel/commerce-kedemmarket'
-  //   (
-  //     process.env.BIGCOMMERCE_STOREFRONT_API_URL
-  //       ? '@vercel/commerce-bigcommerce'
-  //       : process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-  //       ? '@vercel/commerce-shopify'
-  //       : process.env.NEXT_PUBLIC_SWELL_STORE_ID
-  //       ? '@vercel/commerce-swell'
-  //       : '@vercel/commerce-local'
-  //   )
-  // )
+  return '@vercel/commerce-kedemmarket'
 }
 
 function withCommerceConfig(nextConfig = {}) {
@@ -50,12 +25,8 @@ function withCommerceConfig(nextConfig = {}) {
       `The commerce provider is missing, please add a valid provider name or its environment variables`
     )
   }
-  if (!PROVIDERS.includes(provider)) {
-    throw new Error(
-      `The commerce provider "${provider}" can't be found, please use one of "${PROVIDERS.join(
-        ', '
-      )}"`
-    )
+  if (provider != getProviderName()) {
+    throw new Error(`Invalid provider: "${provider}"`)
   }
 
   // Update paths in `tsconfig.json` to point to the selected provider
