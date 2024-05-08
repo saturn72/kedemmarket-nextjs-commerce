@@ -8,13 +8,11 @@ const merge = require('deepmerge')
 const prettier = require('prettier')
 const core = require('@vercel/commerce/config')
 
-function getProviderName() {
-  return '@vercel/commerce-kedemmarket'
-}
+const KEDEM_MARKET_PROVIDER = '@vercel/commerce-kedemmarket'
 
 function withCommerceConfig(nextConfig = {}) {
   const config = merge(
-    { commerce: { provider: getProviderName() } },
+    { commerce: { provider: KEDEM_MARKET_PROVIDER } },
     nextConfig
   )
   const { commerce } = config
@@ -25,7 +23,7 @@ function withCommerceConfig(nextConfig = {}) {
       `The commerce provider is missing, please add a valid provider name or its environment variables`
     )
   }
-  if (provider != getProviderName()) {
+  if (provider != KEDEM_MARKET_PROVIDER) {
     throw new Error(`Invalid provider: "${provider}"`)
   }
 
@@ -100,4 +98,4 @@ function withCommerceConfig(nextConfig = {}) {
   return core.withCommerceConfig(config)
 }
 
-module.exports = { withCommerceConfig, getProviderName }
+module.exports = { withCommerceConfig }
