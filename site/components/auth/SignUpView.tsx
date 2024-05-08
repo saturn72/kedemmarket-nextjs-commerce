@@ -4,6 +4,7 @@ import { Info } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
+import t from 'locale'
 
 interface Props { }
 
@@ -83,10 +84,10 @@ const SignUpView: FC<Props> = () => {
             }}
           ></div>
         )}
-        <Input placeholder="First Name" onChange={setFirstName} />
-        <Input placeholder="Last Name" onChange={setLastName} />
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+        <Input placeholder={t("firstName")} onChange={setFirstName} />
+        <Input placeholder={t("lastName")} onChange={setLastName} />
+        <Input type="email" placeholder={t("email")} onChange={setEmail} />
+        <Input type="password" placeholder={t("password")} onChange={setPassword} />
         <span className="text-accent-8">
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />
@@ -103,7 +104,7 @@ const SignUpView: FC<Props> = () => {
             loading={loading}
             disabled={disabled}
           >
-            Sign Up
+            {t('signUp')}
           </Button>
         </div>
 
@@ -114,7 +115,7 @@ const SignUpView: FC<Props> = () => {
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
-            Log In
+            {t('logIn')}
           </a>
         </span>
       </div>

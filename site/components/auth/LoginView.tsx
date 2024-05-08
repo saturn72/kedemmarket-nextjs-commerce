@@ -3,6 +3,7 @@ import { Logo, Button, Input } from '@components/ui'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
+import t from 'locale'
 
 const LoginView: React.FC = () => {
   // Form State
@@ -63,7 +64,7 @@ const LoginView: React.FC = () => {
       className="w-80 flex flex-col justify-between p-3"
     >
       <div className="flex justify-center pb-12 ">
-        <Logo/>
+        <Logo />
       </div>
       <div className="flex flex-col space-y-3">
         {message && (
@@ -77,8 +78,8 @@ const LoginView: React.FC = () => {
             </a>
           </div>
         )}
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+        <Input type="email" placeholder={t('email')} onChange={setEmail} />
+        <Input type="password" placeholder={t('password')} onChange={setPassword} />
 
         <Button
           variant="slim"
@@ -86,16 +87,16 @@ const LoginView: React.FC = () => {
           loading={loading}
           disabled={disabled}
         >
-          Log In
+          {t('logIn')}
         </Button>
         <div className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Don't have an account?</span>
+          <span className="text-accent-7">{t('dontHaveAnAccount')}</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
-            Sign Up
+            {t('signUp')}
           </a>
         </div>
       </div>

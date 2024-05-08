@@ -2,8 +2,9 @@ import { FC, useEffect, useState, useCallback } from 'react'
 import { validate } from 'email-validator'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
+import t from 'locale'
 
-interface Props {}
+interface Props { }
 
 const ForgotPassword: FC<Props> = () => {
   // Form State
@@ -67,7 +68,7 @@ const ForgotPassword: FC<Props> = () => {
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
-            Log In
+            {t('logIn')}
           </a>
         </span>
       </div>
