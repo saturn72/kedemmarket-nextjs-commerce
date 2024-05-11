@@ -3,8 +3,10 @@
   transition-timing-function: ease;
   transition-property: color, background-color, opacity;
   @apply p-3 text-accent-9 flex items-center
-  justify-center font-semibold cursor-pointer
+  justify-center font-semibold cursor-pointer 
   bg-accent-0 text-sm;
+  border-radius: 50%;
+  align-self: flex-start;
 }
 
 .root:focus {
@@ -19,7 +21,7 @@
 }
 
 .icon.loading {
-  fill: var(--pink-light);
+  /* fill: var(--pink-light); */
 }
 
 .icon.inWishlist {

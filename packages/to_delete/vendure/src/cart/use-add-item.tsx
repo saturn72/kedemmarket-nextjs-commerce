@@ -6,7 +6,7 @@ import useCart from './use-cart'
 import { AddItemToOrderMutation } from '../../schema'
 import { normalizeCart } from '../utils/normalize'
 import { addItemToOrderMutation } from '../utils/mutations/add-item-to-order-mutation'
-import type { AddItemHook } from '@vercel/commerce/types/cart'
+import { AddItemHook } from '@vercel/commerce/types/cart'
 
 export default useAddItem as UseAddItem<typeof handler>
 
@@ -39,16 +39,16 @@ export const handler: MutationHook<AddItemHook> = {
   },
   useHook:
     ({ fetch }) =>
-    () => {
-      const { mutate } = useCart()
+      () => {
+        const { mutate } = useCart()
 
-      return useCallback(
-        async function addItem(input) {
-          const data = await fetch({ input })
-          await mutate(data, false)
-          return data
-        },
-        [fetch, mutate]
-      )
-    },
+        return useCallback(
+          async function addItem(input) {
+            const data = await fetch({ input })
+            await mutate(data, false)
+            return data
+          },
+          [fetch, mutate]
+        )
+      },
 }

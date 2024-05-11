@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { SWRHook } from '@vercel/commerce/utils/types'
 import useWishlist, {
-  type UseWishlist,
+  UseWishlist,
 } from '@vercel/commerce/wishlist/use-wishlist'
 import useCustomer from '../customer/use-customer'
 
@@ -28,30 +28,30 @@ export const handler: SWRHook<GetWishlistHook> = {
   },
   useHook:
     ({ useData }) =>
-    (input) => {
-      const { data: customer } = useCustomer()
-      const response = useData({
-        input: [
-          ['customerId', customer?.id],
-          ['includeProducts', input?.includeProducts],
-        ],
-        swrOptions: {
-          revalidateOnFocus: false,
-          ...input?.swrOptions,
-        },
-      })
+      (input) => {
+        const { data: customer } = useCustomer()
+        const response = useData({
+          input: [
+            ['customerId', customer?.id],
+            ['includeProducts', input?.includeProducts],
+          ],
+          swrOptions: {
+            revalidateOnFocus: false,
+            ...input?.swrOptions,
+          },
+        })
 
-      return useMemo(
-        () =>
-          Object.create(response, {
-            isEmpty: {
-              get() {
-                return (response.data?.items?.length || 0) <= 0
+        return useMemo(
+          () =>
+            Object.create(response, {
+              isEmpty: {
+                get() {
+                  return (response.data?.items?.length || 0) <= 0
+                },
+                enumerable: true,
               },
-              enumerable: true,
-            },
-          }),
-        [response]
-      )
-    },
+            }),
+          [response]
+        )
+      },
 }

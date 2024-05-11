@@ -7,7 +7,7 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import ProductCardSlim from '@components/product/ProductCardSlim'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import { getHomePageInfo, getHomePageProducts } from 'cms/homePage'
-import ProductCardStandAlone from '@components/product/ProductCardStandAlone'
+import ProductCardFull from '@components/product/ProductCardFull'
 
 export async function getStaticProps({
   preview,
@@ -41,8 +41,8 @@ export default function Home({
   return (
     <>
       <Grid variant="filled">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCardStandAlone
+        {products.slice(0, 5).map((product: any, i: number) => (
+          <ProductCardFull
             key={product.id}
             product={product}
             imgProps={{

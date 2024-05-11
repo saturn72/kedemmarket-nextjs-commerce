@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import type { MutationHook } from '@vercel/commerce/utils/types'
 import { CommerceError } from '@vercel/commerce/utils/errors'
-import useSignup, { type UseSignup } from '@vercel/commerce/auth/use-signup'
+import useSignup, { UseSignup } from '@vercel/commerce/auth/use-signup'
 import type { SignupHook } from '@vercel/commerce/types/signup'
 import useCustomer from '../customer/use-customer'
 
@@ -31,16 +31,16 @@ export const handler: MutationHook<SignupHook> = {
   },
   useHook:
     ({ fetch }) =>
-    () => {
-      const { mutate } = useCustomer()
+      () => {
+        const { mutate } = useCustomer()
 
-      return useCallback(
-        async function signup(input) {
-          const data = await fetch({ input })
-          await mutate()
-          return data
-        },
-        [fetch, mutate]
-      )
-    },
+        return useCallback(
+          async function signup(input) {
+            const data = await fetch({ input })
+            await mutate()
+            return data
+          },
+          [fetch, mutate]
+        )
+      },
 }

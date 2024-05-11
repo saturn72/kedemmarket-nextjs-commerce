@@ -15,6 +15,7 @@ export default {
   logIn:'כניסה',
   password:'🗝️ סיסמה',
   notAvailable:'לא זמין לרכישה',
+  search:'חיפוש 🔎',
   signUp:'רישום',
   yourCartIsEmpty:'אין פריטים בעגלת הקניות 🛒',
 }

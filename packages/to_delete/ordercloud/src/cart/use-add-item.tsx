@@ -1,4 +1,4 @@
-import type { AddItemHook } from '@vercel/commerce/types/cart'
+import { AddItemHook } from '@vercel/commerce/types/cart'
 import type { MutationHook } from '@vercel/commerce/utils/types'
 
 import { useCallback } from 'react'

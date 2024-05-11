@@ -33,4 +33,5 @@ export interface Image {
    * The image's height.
    */
   height?: number
+  quality?: number
 }

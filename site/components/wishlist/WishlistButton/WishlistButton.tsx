@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react'
 import cn from 'clsx'
 import { useUI } from '@components/ui'
-import { Heart } from '@components/icons'
 import useAddItem from '@framework/wishlist/use-add-item'
 import useCustomer from '@framework/customer/use-customer'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
 import s from './WishlistButton.module.css'
 import type { Product, ProductVariant } from '@commerce/types/product'
+import { Favorite } from '@mui/icons-material'
 
 type Props = {
   productId: Product['id']
@@ -69,13 +69,30 @@ const WishlistButton: FC<Props> = ({
       onClick={handleWishlistChange}
       {...props}
     >
-      <Heart
+      <Favorite />
+      {/* <Heart
         className={cn(s.icon, {
           [s.loading]: loading,
           [s.inWishlist]: itemInWishlist,
         })}
-      />
+      /> */}
     </button>
+
+    // <IconButton
+    //   aria-label="Add to wish list"
+    //   size='md'
+    //   color='danger'
+    //   variant='solid'
+    //   sx={{
+    //     position: 'absolute',
+    //     zIndex: 2,
+    //     borderRadius: '50%',
+    //     right: '1rem',
+    //     bottom: 0,
+    //     transform: 'translateY(50%)',
+    //   }}
+    // >
+    // </IconButton>
   )
 }
 
