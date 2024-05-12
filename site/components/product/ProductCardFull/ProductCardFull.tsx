@@ -8,7 +8,7 @@ import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
 import AddRemoveFromCart from '@components/cart/AddRemoveFromCart'
-import { Card, CardActions, CardCover, CardContent, CardOverflow, IconButton } from '@mui/joy'
+import { Card, CardActions, CardCover, CardContent, CardOverflow, Button } from '@mui/joy'
 import { Favorite } from '@mui/icons-material'
 
 import { Typography } from '@mui/material'
@@ -93,7 +93,8 @@ const ProductCardFull: FC<Props> = ({
           </Typography>
         )}
       </CardContent>
-      <CardActions></CardActions>
+      <AddRemoveFromCart className={s.addRemoveFromCart}
+        productId={product.id} active={product.active} />
     </Card >
     // <Card className={rootClassName} variant='outlined'>
     //   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -155,8 +156,6 @@ const ProductCardFull: FC<Props> = ({
     //     variant={product.variants[0] as any}
     //   />
     //   {!product.active}
-    //   <AddRemoveFromCart className={s.addRemoveFromCart}
-    //     productId={product.id} active={product.active} />
 
     //   <div className={s.imageContainer}>
     //     {product?.images && (

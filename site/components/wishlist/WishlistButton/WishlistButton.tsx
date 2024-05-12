@@ -8,6 +8,7 @@ import useRemoveItem from '@framework/wishlist/use-remove-item'
 import s from './WishlistButton.module.css'
 import type { Product, ProductVariant } from '@commerce/types/product'
 import { Favorite } from '@mui/icons-material'
+import { Fab } from '@mui/material'
 
 type Props = {
   productId: Product['id']
@@ -63,20 +64,26 @@ const WishlistButton: FC<Props> = ({
   }
 
   return (
-    <button
+    <Fab
+      color="error"
       aria-label="Add to wishlist"
-      className={cn(s.root, className)}
-      onClick={handleWishlistChange}
-      {...props}
     >
       <Favorite />
-      {/* <Heart
-        className={cn(s.icon, {
-          [s.loading]: loading,
-          [s.inWishlist]: itemInWishlist,
-        })}
-      /> */}
-    </button>
+    </Fab >
+    // <button
+    //   aria-label="Add to wishlist"
+    //   className={cn(s.root, className)}
+    //   onClick={handleWishlistChange}
+    //   {...props}
+    // >
+    //   <Favorite />
+    //   {/* <Heart
+    //     className={cn(s.icon, {
+    //       [s.loading]: loading,
+    //       [s.inWishlist]: itemInWishlist,
+    //     })}
+    //   /> */}
+    // </button>
 
     // <IconButton
     //   aria-label="Add to wish list"

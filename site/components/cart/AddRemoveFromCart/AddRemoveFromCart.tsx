@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import cn from 'clsx'
 import { Button, useUI } from '@components/ui'
 import { Plus, Minus } from '@components/icons'
+import { Input } from '@mui/joy'
 import useCustomer from '@framework/customer/use-customer'
 import s from './AddRemoveFromCart.module.css'
 import type { Product, ProductVariant } from '@commerce/types/product'
@@ -67,48 +68,59 @@ const AddRemoveFromCart: FC<Props> = ({
     }
   }
 
+  //press on card to redirect to product page
+  //add image gallery
   return (
     <>
-      <Button
-        aria-label="Add to Cart"
-        type="button"
-        className={cn(s.root, className)}
-        onClick={e => handleCartChange(e, 'add')}
-        // onClick={addToCart}
-        loading={loading}
-        disabled={!active}
-      >
-        {!active
-          ? t('notAvailable')
-          : t('addToCart')}
-        &nbsp;
-        <CartPlus />
-      </Button>
-      {/* <Button
-        aria-label="Add to cart"
-        className={cn(s.root, className)}
-        onClick={e => handleCartChange(e, 'add')}
-        {...props}
-      >
-        <Plus
-          className={cn(s.icon, {
-            [s.loading]: loading,
-          })}
-        />
-      </Button>
-      cart quantity goes here
-      <Button
-        aria-label="Remove from cart"
-        className={cn(s.root, className)}
-        onClick={e => handleCartChange(e, 'remove')}
-        {...props}
-      >
-        <Minus
-          className={cn(s.icon, {
-            [s.loading]: loading
-          })}
-        />
-      </Button > */}
+      {
+        itemInCart ? (
+          <Button
+            aria-label="Add to Cart"
+            type="button"
+            className={cn(s.root, className)}
+            onClick={e => handleCartChange(e, 'add')}
+            // onClick={addToCart}
+            loading={loading}
+            disabled={!active}
+          >
+            {!active
+              ? t('notAvailable')
+              : t('addToCart')}
+            & nbsp;
+            <CartPlus />
+          </Button >
+
+        ) : (
+          <Input
+            value='quantity from cart'
+            startDecorator={<Button
+              aria-label="Add to cart"
+              className={cn(s.root, className)}
+              onClick={e => handleCartChange(e, 'add')}
+              {...props}
+            >
+              <Plus
+                className={cn(s.icon, {
+                  [s.loading]: loading,
+                })}
+              />
+            </Button>}
+            endDecorator={
+              <Button
+                aria-label="Remove from cart"
+                className={cn(s.root, className)}
+                onClick={e => handleCartChange(e, 'remove')}
+                {...props}
+              >
+                <Minus
+                  className={cn(s.icon, {
+                    [s.loading]: loading
+                  })}
+                />
+              </Button >}
+          />
+        )
+      }
     </>
   )
 }
