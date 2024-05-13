@@ -2,14 +2,17 @@
   transition-duration: 0.2s;
   transition-timing-function: ease;
   transition-property: color, background-color, opacity;
-  text-align: center;
-  @apply flex p-3 text-accent-9  items-center
+  @apply flex p-3 text-accent-9 items-center
   justify-center font-semibold cursor-pointer
   bg-accent-0 text-sm;
 }
 
 .root:focus {
   @apply outline-none;
+}
+
+.className {
+  text-align: center;
 }
 
 .inCart {

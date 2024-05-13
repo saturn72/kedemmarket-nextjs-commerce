@@ -93,6 +93,8 @@ const AddRemoveFromCart: FC<Props> = ({
         ) : (
           <Input
             value='quantity from cart'
+            // sx={{ 'text-align': 'center' }}
+            className={cn(s.root, className)}
             startDecorator={<Button
               aria-label="Add to cart"
               className={cn(s.root, className)}
