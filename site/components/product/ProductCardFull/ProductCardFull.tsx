@@ -1,17 +1,19 @@
 import { FC } from 'react'
 import cn from 'clsx'
-import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
 import s from './ProductCardFull.module.css'
 import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
-import ProductTag from '../ProductTag'
 import AddRemoveFromCart from '@components/cart/AddRemoveFromCart'
-import { Card, CardActions, CardCover, CardContent, CardOverflow, Button } from '@mui/joy'
-import { Favorite } from '@mui/icons-material'
+import {
+  Card,
+  CardContent,
+  CardCover,
+  CardOverflow
+} from '@mui/joy'
 
-import { Typography } from '@mui/material'
+import { ImageList, ImageListItem, Typography } from '@mui/material'
 
 interface Props {
   className?: string
@@ -70,13 +72,46 @@ const ProductCardFull: FC<Props> = ({
           variant={product.variants[0] as any}
         />
       </CardOverflow>
-      <CardContent>
+      <CardContent style={{
+        justifyContent: 'end',
+      }}>
+
+        {/* <AvatarGroup size='lg' sx={{ flexDirection: 'row-reverse' }}>
+          {product.images.map((image: any, i: number) => {
+            // const size = Math.min(image.width, image.height, 450) * 0.75 || 300;
+
+            return (< Avatar
+              key={image.id}
+              alt={image.alt || product.name}
+              // sx={{
+              //   width: size,
+              //   height: size,
+              // }}
+              src={image.src}
+            />
+            )
+          })}
+        </AvatarGroup>
+      */}
+        {/* <ImageList sx={{ width: 500, height: 450 }} cols={product.images.length} rowHeight={164}>
+          {product.images.map((image: any, i: number) => (
+            <ImageListItem key={image.url}> */}
+        <img
+          srcSet={`${image.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+          src={image.url}
+          alt={image.alt || product.name}
+          loading="lazy"
+        />
+        {/* </ImageListItem>? */}
+        {/* ))}? */}
+        {/* </ImageList> */}
+
         <Typography
           variant='h4'
           // level="body-lg"
           fontWeight="lg"
           color="#fff"
-          mt={{ xs: 12, sm: 18 }}
+        // mt={{ xs: 12, sm: 18 }}
         >
           {product.name}
         </Typography>
@@ -92,6 +127,7 @@ const ProductCardFull: FC<Props> = ({
             {product.description}
           </Typography>
         )}
+
       </CardContent>
       <AddRemoveFromCart className={s.addRemoveFromCart}
         productId={product.id} active={product.active} />
