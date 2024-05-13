@@ -7,7 +7,7 @@ import useWishlist from '@framework/wishlist/use-wishlist'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
 import s from './WishlistButton.module.css'
 import type { Product, ProductVariant } from '@commerce/types/product'
-import { Favorite } from '@mui/icons-material'
+import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { Fab } from '@mui/material'
 
 type Props = {
@@ -64,11 +64,15 @@ const WishlistButton: FC<Props> = ({
   }
 
   return (
-    <Fab
+    <Fab className={s.root}
       color="error"
       aria-label="Add to wishlist"
+      onClick={handleWishlistChange}
     >
-      <Favorite />
+      {itemInWishlist ?
+        <Favorite color='error' /> :
+        <FavoriteBorder />
+      }
     </Fab >
     // <button
     //   aria-label="Add to wishlist"
