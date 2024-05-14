@@ -1,7 +1,9 @@
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
-import { Grid, Marquee } from '@components/ui'
+import { Stack, Grid } from '@mui/joy';
+
+import { Marquee } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import ProductCardSlim from '@components/product/ProductCardSlim'
@@ -40,7 +42,11 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Grid variant="filled">
+      <Grid
+        container
+        columns={{ xs: 1, sm: 2, md: 4, lg: 4, xl: 5 }}
+        sx={{ flexGrow: 1, justifyContent: 'center' }}
+      >
         {products.slice(0, 5).map((product: any, i: number) => (
           <ProductCardFull
             key={product.id}
@@ -53,7 +59,7 @@ export default function Home({
             }}
           />
         ))}
-      </Grid>
+      </Grid >
       <Marquee variant="secondary">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCardSlim key={product.id} product={product} />
@@ -61,7 +67,7 @@ export default function Home({
       </Marquee>
       {/* <Heros /> */}
 
-      <Grid layout="B" variant="filled">
+      {/* <Grid layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
@@ -73,7 +79,7 @@ export default function Home({
             }}
           />
         ))}
-      </Grid>
+      </Grid> */}
       <Marquee>
         {products.slice(3).map((product: any, i: number) => (
           <ProductCardSlim key={product.id} product={product} />

@@ -5,6 +5,7 @@ export default {
   allowedCookiesButtonLabel: "Allowed All Cookies",
   backToStore:'חזרה לחנות 🏪',
   cart: "לתשלום",
+  close:"סגירה",
   dontHaveAnAccount:'🆕 עדיין אין לך חשבון?',
   email:'📧 אימייל',
   firstName:'שם פרטי',

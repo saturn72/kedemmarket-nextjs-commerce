@@ -1,18 +1,19 @@
 import React, { FC, useState } from 'react'
-import cn from 'clsx'
 import { useUI } from '@components/ui'
 import useAddItem from '@framework/wishlist/use-add-item'
 import useCustomer from '@framework/customer/use-customer'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
+import cn from 'clsx'
 import s from './WishlistButton.module.css'
 import type { Product, ProductVariant } from '@commerce/types/product'
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
-import { Fab } from '@mui/material'
+import { IconButton } from '@mui/joy'
 
 type Props = {
   productId: Product['id']
   variant: ProductVariant
+
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const WishlistButton: FC<Props> = ({
@@ -20,7 +21,7 @@ const WishlistButton: FC<Props> = ({
   variant,
   className,
   ...props
-}) => {
+}: Props) => {
   const { data } = useWishlist()
   const addItem = useAddItem()
   const removeItem = useRemoveItem()
@@ -64,16 +65,31 @@ const WishlistButton: FC<Props> = ({
   }
 
   return (
-    <Fab className={s.root}
-      color="error"
+    <IconButton
+      className={s.root}
       aria-label="Add to wishlist"
       onClick={handleWishlistChange}
+      size="md"
+      variant="solid"
+      color="danger"
+      sx={{
+        position: 'absolute',
+        borderRadius: '50%',
+        bottom: 0,
+        transform: 'translateY(50%)'
+      }}
     >
       {itemInWishlist ?
-        <Favorite color='error' /> :
+        <Favorite />
+        :
         <FavoriteBorder />
       }
-    </Fab >
+    </IconButton>
+
+    // <Fab 
+    //   color="error"
+    // >
+    // </Fab >
     // <button
     //   aria-label="Add to wishlist"
     //   className={cn(s.root, className)}

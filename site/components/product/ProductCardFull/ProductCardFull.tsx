@@ -7,13 +7,14 @@ import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import AddRemoveFromCart from '@components/cart/AddRemoveFromCart'
 import {
+  AspectRatio,
   Card,
   CardContent,
   CardCover,
   CardOverflow
 } from '@mui/joy'
 
-import { ImageList, ImageListItem, Typography } from '@mui/material'
+import { Typography } from '@mui/joy'
 
 interface Props {
   className?: string
@@ -52,7 +53,7 @@ const ProductCardFull: FC<Props> = ({
   };
 
   return (
-    <Card>
+    <Card variant='plain' sx={{ width: 'auto' }}>
       <CardCover>
         <Image
           style={{ opacity: 0.2 }}
@@ -66,52 +67,48 @@ const ProductCardFull: FC<Props> = ({
         />
       </CardCover>
       <CardOverflow>
+        <AspectRatio ratio="2">
+          <img
+            src={image.src}
+            srcSet={image.src}
+            loading="lazy"
+            alt={image.alt || product.name}
+          />
+        </AspectRatio>
         <WishlistButton
           className={s.wishlistButton}
           productId={product.id}
           variant={product.variants[0] as any}
         />
+        {/* <IconButton
+          aria-label="Like minimal photography"
+          size="md"
+          variant="solid"
+          color="danger"
+          sx={{
+            position: 'absolute',
+            zIndex: 2,
+            borderRadius: '50%',
+            right: '1rem',
+            bottom: 0,
+            transform: 'translateY(50%)',
+          }}
+        >
+          <Favorite />
+        </IconButton> */}
       </CardOverflow>
+
       <CardContent style={{
         justifyContent: 'end',
       }}>
-
-        {/* <AvatarGroup size='lg' sx={{ flexDirection: 'row-reverse' }}>
-          {product.images.map((image: any, i: number) => {
-            // const size = Math.min(image.width, image.height, 450) * 0.75 || 300;
-
-            return (< Avatar
-              key={image.id}
-              alt={image.alt || product.name}
-              // sx={{
-              //   width: size,
-              //   height: size,
-              // }}
-              src={image.src}
-            />
-            )
-          })}
-        </AvatarGroup>
-      */}
-        {/* <ImageList sx={{ width: 500, height: 450 }} cols={product.images.length} rowHeight={164}>
-          {product.images.map((image: any, i: number) => (
-            <ImageListItem key={image.url}> */}
-        <img
+        {/* <img
           srcSet={`${image.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
           src={image.url}
           alt={image.alt || product.name}
           loading="lazy"
-        />
-        {/* </ImageListItem>? */}
-        {/* ))}? */}
-        {/* </ImageList> */}
-
+        /> */}
         <Typography
-          variant='h4'
-          // level="body-lg"
           fontWeight="lg"
-          color="#fff"
-        // mt={{ xs: 12, sm: 18 }}
         >
           {product.name}
         </Typography>
@@ -119,18 +116,14 @@ const ProductCardFull: FC<Props> = ({
         {product.description && (
 
           <Typography
-            variant='body1'
-            // level="body-lg"
-            fontWeight="lg"
-            color="#fff"
           >
             {product.description}
           </Typography>
         )}
 
-      </CardContent>
-      <AddRemoveFromCart className={s.addRemoveFromCart}
-        productId={product.id} active={product.active} />
+        <AddRemoveFromCart className={s.addRemoveFromCart}
+          productId={product.id} active={product.active} />
+      </CardContent >
     </Card >
     // <Card className={rootClassName} variant='outlined'>
     //   <Box sx={{ display: 'flex', flexDirection: 'column' }}>

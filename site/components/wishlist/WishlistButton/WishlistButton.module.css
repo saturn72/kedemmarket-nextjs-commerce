@@ -3,10 +3,15 @@
   transition-timing-function: ease;
   transition-property: color, background-color, opacity;
   @apply p-3 text-accent-9 flex items-center
-  justify-center font-semibold cursor-pointer z-20
-  bg-accent-0 text-sm;
+  justify-center font-semibold cursor-pointer 
+  bg-accent-0 text-sm
+  bg-rose-600;
+
+  z-index: 20;
+  left: 1rem;
   border-radius: 50%;
-  align-self: flex-start;
+  bottom: 0;
+  /* align-self: flex-start; */
 }
 
 .root:focus {
@@ -14,6 +19,7 @@
 }
 
 .icon {
+  left: '1rem';
   transition-duration: 0.2s;
   transition-timing-function: ease;
   transition-property: transform, fill;
@@ -25,7 +31,7 @@
 }
 
 .icon.inWishlist {
-  fill: var(--pink);
+  /* fill: var(--pink); */
 }
 
 @screen lg {

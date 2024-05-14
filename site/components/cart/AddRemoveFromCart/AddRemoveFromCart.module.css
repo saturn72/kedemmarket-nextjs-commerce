@@ -3,16 +3,13 @@
   transition-timing-function: ease;
   transition-property: color, background-color, opacity;
   @apply flex p-3 text-accent-9 items-center
-  justify-center font-semibold cursor-pointer
+  justify-center cursor-pointer font-bold
   bg-accent-0 text-sm;
+  align-text: center;
 }
 
 .root:focus {
   @apply outline-none;
-}
-
-.className {
-  text-align: center;
 }
 
 .inCart {

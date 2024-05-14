@@ -21,6 +21,7 @@ export interface Image {
    * The URL of the image.
    */
   url: string
+  srcSet: string
   /**
    * A word or phrase that describes the content of an image.
    */
