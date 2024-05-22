@@ -26,7 +26,7 @@ const removeItem: WishlistEndpoint['handlers']['removeItem'] = async ({
     throw new CommerceAPIError('Wishlist not found', { status: 400 })
   }
 
-  const result = await config.storeApiFetch<{ data: BCWishlist } | null>(
+  const result = await config.fetch<{ data: BCWishlist } | null>(
     `/v3/wishlists/${wishlist.id}/items/${itemId}`,
     { method: 'DELETE' }
   )

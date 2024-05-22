@@ -13,7 +13,7 @@ const getCart: CartEndpoint['handlers']['getCart'] = async ({
 }) => {
   if (cartId) {
     try {
-      const result = await config.storeApiFetch<{
+      const result = await config.fetch<{
         data?: KedemmarketCart
       } | null>(
         `/v3/carts/${cartId}?include=line_items.physical_items.options,line_items.digital_items.options`

@@ -36,10 +36,10 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
             <div className={s.sliderContainer}>
               <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (
-                  <div key={image.url} className={s.imageContainer}>
+                  <div key={image.src} className={s.imageContainer}>
                     <Image
                       className={s.img}
-                      src={image.url!}
+                      src={image.src!}
                       alt={image.alt || 'Product Image'}
                       width={600}
                       height={600}
@@ -93,7 +93,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           description: product.description,
           images: [
             {
-              url: product.images[0]?.url!,
+              url: product.images[0]?.src!,
               width: '800',
               height: '600',
               alt: product.name,

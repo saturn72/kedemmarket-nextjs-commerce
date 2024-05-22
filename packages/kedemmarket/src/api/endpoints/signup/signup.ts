@@ -8,7 +8,7 @@ const signup: SignupEndpoint['handlers']['signup'] = async ({
   commerce,
 }) => {
   try {
-    await config.storeApiFetch('/v3/customers', {
+    await config.fetch('/v3/customers', {
       method: 'POST',
       body: JSON.stringify([
         {

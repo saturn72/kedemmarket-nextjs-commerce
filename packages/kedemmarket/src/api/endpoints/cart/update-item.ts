@@ -9,7 +9,7 @@ const updateItem: CartEndpoint['handlers']['updateItem'] = async ({
   body: { cartId, itemId, item },
   config,
 }) => {
-  const { data } = await config.storeApiFetch<{ data: KedemmarketCart }>(
+  const { data } = await config.fetch<{ data: KedemmarketCart }>(
     `/v3/carts/${cartId}/items/${itemId}?include=line_items.physical_items.options`,
     {
       method: 'PUT',

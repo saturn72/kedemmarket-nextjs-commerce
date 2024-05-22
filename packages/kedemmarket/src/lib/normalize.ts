@@ -2,7 +2,7 @@ import type { Page } from '@vercel/commerce/types/page'
 import type { Product } from '@vercel/commerce/types/product'
 import type { Cart, LineItem } from '@vercel/commerce/types/cart'
 import type { Category, Brand } from '@vercel/commerce/types/site'
-import type { KedemmarketCart, BCCategory, BCBrand } from '../types'
+import type { KedemmarketCart, KMCategory, KMBrand } from '../types'
 // import type { ProductNode } from '../api/operations/get-all-products'
 import type { definitions } from '../api/definitions/store-content'
 import type { BCWishlist } from '../api/utils/types'
@@ -106,7 +106,8 @@ function normalizeLineItem(item: any): LineItem {
       sku: item.sku,
       name: item.name,
       image: {
-        url: item.image_url,
+        src: item.image_url,
+        srcSet: item.image_url,
       },
       requiresShipping: item.is_require_shipping,
       price: item.sale_price,
@@ -120,7 +121,7 @@ function normalizeLineItem(item: any): LineItem {
   }
 }
 
-export function normalizeCategory(category: BCCategory): Category {
+export function normalizeCategory(category: KMCategory): Category {
   return {
     id: `${category.entityId}`,
     name: category.name,
@@ -129,7 +130,7 @@ export function normalizeCategory(category: BCCategory): Category {
   }
 }
 
-export function normalizeBrand(brand: BCBrand): Brand {
+export function normalizeBrand(brand: KMBrand): Brand {
   const path = brand.node.path.replace('/brands/', '')
   const slug = getSlug(path)
   return {

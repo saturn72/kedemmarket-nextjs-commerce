@@ -15,7 +15,7 @@ const getCheckout: CheckoutEndpoint['handlers']['getCheckout'] = async ({
     return { redirectTo: '/cart' }
   }
 
-  const { data } = await config.storeApiFetch<any>(
+  const { data } = await config.fetch<any>(
     `/v3/carts/${cartId}/redirect_urls`,
     {
       method: 'POST',

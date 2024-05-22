@@ -3,7 +3,6 @@ import type {
   OperationOptions,
 } from '@vercel/commerce/api/operations'
 import type { GetSiteInfoOperation } from '@vercel/commerce/types/site'
-import type { GetSiteInfoQuery } from '../../../schema'
 import filterEdges from '../utils/filter-edges'
 import type { KedemMarketConfig, Provider } from '..'
 import { categoryTreeItemFragment } from '../fragments/category-tree'
@@ -78,7 +77,7 @@ export default function getSiteInfoOperation({
     }
 
     const cfg = commerce.getConfig(config)
-    const { data } = await cfg.storeApiFetch<GetSiteInfoQuery>(query)
+    const { data } = await cfg.fetch<any>(query)
     const categories = data.site.categoryTree.map(normalizeCategory)
     const brands = data.site?.brands?.edges
 

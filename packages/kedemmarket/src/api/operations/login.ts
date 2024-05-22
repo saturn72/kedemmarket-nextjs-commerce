@@ -3,7 +3,6 @@ import type {
   OperationOptions,
 } from '@vercel/commerce/api/operations'
 import type { LoginOperation } from '@vercel/commerce/types/login'
-import type { LoginMutation } from '../../../schema'
 import type { RecursivePartial } from '../utils/types'
 import type { KedemMarketConfig, Provider } from '..'
 
@@ -42,9 +41,7 @@ export default function loginOperation({
   }): Promise<T['data']> {
     config = commerce.getConfig(config)
 
-    const { data, res } = await config.storeApiFetch<
-      RecursivePartial<LoginMutation>
-    >(query, { variables })
+    const { data, res } = await config.fetch<any>(query)
 
     const headers = new Headers()
 

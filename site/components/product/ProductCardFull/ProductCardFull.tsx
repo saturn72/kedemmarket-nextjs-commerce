@@ -48,7 +48,7 @@ const ProductCardFull: FC<Props> = ({
     alt: product.images[0].alt || product.name,
     height: product.images[0].height || 140,
     width: product.images[0].width || 140,
-    src: product.images[0]?.url || placeholderImg,
+    src: product.images[0]?.src || placeholderImg,
     quality: product.images[0]?.quality || 85
   };
 
@@ -68,9 +68,8 @@ const ProductCardFull: FC<Props> = ({
       </CardCover>
       <CardOverflow>
         <AspectRatio ratio="2">
-          <img
+          <Image
             src={image.src}
-            srcSet={image.src}
             loading="lazy"
             alt={image.alt || product.name}
           />
@@ -79,7 +78,8 @@ const ProductCardFull: FC<Props> = ({
           className={s.wishlistButton}
           productId={product.id}
           variant={product.variants[0] as any}
-        /> </CardOverflow>
+        />
+      </CardOverflow>
 
       <CardContent style={{
         justifyContent: 'end',
@@ -97,9 +97,11 @@ const ProductCardFull: FC<Props> = ({
             {product.description}
           </Typography>
         )}
-
-        <AddRemoveFromCart className={s.addRemoveFromCart}
-          productId={product.id} active={product.active} />
+        {/* 
+        <AddRemoveFromCart
+          className={s.addRemoveFromCart}
+          productId={product.id}
+          active={product.active} /> */}
       </CardContent >
     </Card>
   )

@@ -168,24 +168,6 @@ export interface CommerceAPIConfig {
   cartCookie: string
   cartCookieMaxAge: number
   customerCookie: string
-  fetch<Data = any, Variables = any>(
-    query: string,
-    queryData?: CommerceAPIFetchOptions<Variables>,
-    options?: FetchOptions
-  ): Promise<GraphQLFetcherResult<Data>>
-}
-
-export type GraphQLFetcher<
-  Data extends GraphQLFetcherResult = GraphQLFetcherResult,
-  Variables = any
-> = (
-  query: string,
-  queryData?: CommerceAPIFetchOptions<Variables>
-) => Promise<Data>
-
-export interface GraphQLFetcherResult<Data = any> {
-  data: Data
-  res: Response
 }
 
 export interface CommerceAPIFetchOptions<Variables> {

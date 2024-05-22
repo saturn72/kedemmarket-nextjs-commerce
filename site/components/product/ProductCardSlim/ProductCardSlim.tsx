@@ -45,7 +45,7 @@ const ProductCardSlim: FC<Props> = ({
       {product?.images && (
         <Image
           quality="85"
-          src={product.images[0]?.url || placeholderImg}
+          src={product.images[0]?.src || placeholderImg}
           alt={product.name || 'Product Image'}
           height={320}
           width={320}

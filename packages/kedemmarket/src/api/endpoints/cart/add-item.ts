@@ -20,11 +20,11 @@ const addItem: CartEndpoint['handlers']['addItem'] = async ({
   }
 
   const { data } = cartId
-    ? await config.storeApiFetch<{ data: KedemmarketCart }>(
+    ? await config.fetch<{ data: KedemmarketCart }>(
         `/v3/carts/${cartId}/items?include=line_items.physical_items.options,line_items.digital_items.options`,
         options
       )
-    : await config.storeApiFetch<{ data: KedemmarketCart }>(
+    : await config.fetch<{ data: KedemmarketCart }>(
         '/v3/carts?include=line_items.physical_items.options,line_items.digital_items.options',
         options
       )

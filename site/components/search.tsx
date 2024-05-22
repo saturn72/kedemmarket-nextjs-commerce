@@ -8,7 +8,6 @@ import type { Brand } from '@commerce/types/site'
 import type { Product } from '@commerce/types/product'
 
 import { Layout } from '@components/common'
-import { ProductCard } from '@components/product'
 import { Container, Skeleton } from '@components/ui'
 
 import useSearch from '@framework/product/use-search'
@@ -28,6 +27,7 @@ import {
   useSearchMeta,
 } from '@lib/search'
 import ErrorMessage from './ui/ErrorMessage'
+import ProductCardSimple from './product/ProductCardSimple'
 
 export default function Search({ categories, brands }: SearchPropsType) {
   const [activeFilter, setActiveFilter] = useState('')
@@ -103,8 +103,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'categories' || toggleFilter !== true
-                  ? 'hidden'
-                  : ''
+                ? 'hidden'
+                : ''
                 }`}
             >
               <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
@@ -202,8 +202,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'brands' || toggleFilter !== true
-                  ? 'hidden'
-                  : ''
+                ? 'hidden'
+                : ''
                 }`}
             >
               <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">

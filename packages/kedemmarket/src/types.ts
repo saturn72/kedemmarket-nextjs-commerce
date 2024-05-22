@@ -1,12 +1,8 @@
-import type { GetSiteInfoQuery } from '../schema'
+export type KMCategory = NonNullable<any>[0] //GetSiteInfoQuery['site']['categoryTree']
 
-export type BCCategory = NonNullable<
-  GetSiteInfoQuery['site']['categoryTree']
->[0]
-
-export type BCBrand = NonNullable<
-  NonNullable<GetSiteInfoQuery['site']['brands']['edges']>[0]
->
+export type KMBrand = NonNullable<any>
+// NonNullable<GetSiteInfoQuery['site']['brands']['edges']>[0]
+// >
 
 // TODO: this type should match:
 // https://developer.kedemmarket.com/api-reference/cart-checkout/server-server-cart-api/cart/getacart#responses

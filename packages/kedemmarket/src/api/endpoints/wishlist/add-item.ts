@@ -22,7 +22,7 @@ const addItem: WishlistEndpoint['handlers']['addItem'] = async ({
 
   if (!wishlist) {
     // If user has no wishlist, then let's create one with new item
-    const { data } = await config.storeApiFetch<any>('/v3/wishlists', {
+    const { data } = await config.fetch<any>('/v3/wishlists', {
       method: 'POST',
       body: JSON.stringify({
         name: 'Next.js Commerce Wishlist',
@@ -37,7 +37,7 @@ const addItem: WishlistEndpoint['handlers']['addItem'] = async ({
   }
 
   // Existing Wishlist, let's add Item to Wishlist
-  const { data } = await config.storeApiFetch<any>(
+  const { data } = await config.fetch<any>(
     `/v3/wishlists/${wishlist.id}/items`,
     {
       method: 'POST',

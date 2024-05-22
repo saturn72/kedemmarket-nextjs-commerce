@@ -3,64 +3,10 @@ import type {
   OperationOptions,
 } from '@vercel/commerce/api/operations'
 import type { GetProductOperation } from '@vercel/commerce/types/product'
-import type { GetProductQuery, GetProductQueryVariables } from '../../../schema'
 import setProductLocaleMeta from '../utils/set-product-locale-meta'
 import { productInfoFragment } from '../fragments/product'
 import { KedemMarketConfig, Provider } from '..'
 import { normalizeProduct } from '../../lib/normalize'
-
-export const getProductQuery = /* GraphQL */ `
-  query getProduct(
-    $hasLocale: Boolean = false
-    $locale: String = "null"
-    $path: String!
-  ) {
-    site {
-      route(path: $path) {
-        node {
-          __typename
-          ... on Product {
-            ...productInfo
-            variants(first: 250) {
-              edges {
-                node {
-                  entityId
-                  defaultImage {
-                    urlOriginal
-                    altText
-                    isDefault
-                  }
-                  prices {
-                    ...productPrices
-                  }
-                  inventory {
-                    aggregated {
-                      availableToSell
-                      warningLevel
-                    }
-                    isInStock
-                  }
-                  productOptions {
-                    edges {
-                      node {
-                        __typename
-                        entityId
-                        displayName
-                        ...multipleChoiceOption
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  ${productInfoFragment}
-`
 
 // TODO: See if this type is useful for defining the Product type
 // export type ProductNode = Extract<
@@ -86,7 +32,7 @@ export default function getAllProductPathsOperation({
   ): Promise<T['data']>
 
   async function getProduct<T extends GetProductOperation>({
-    query = getProductQuery,
+    query = '',
     variables: { slug, ...vars },
     config: cfg,
   }: {
@@ -97,13 +43,13 @@ export default function getAllProductPathsOperation({
   }): Promise<T['data']> {
     const config = commerce.getConfig(cfg)
     const { locale } = config
-    const variables: GetProductQueryVariables = {
-      locale,
-      hasLocale: !!locale,
-      path: slug ? `/${slug}` : vars.path!,
-    }
-    const { data } = await config.storeApiFetch<GetProductQuery>(query, {
-      variables,
+    // const variables: GetProductQueryVariables = {
+    //   locale,
+    //   hasLocale: !!locale,
+    //   path: slug ? `/${slug}` : vars.path!,
+    // }
+    const { data } = await config.fetch<any>(query, {
+      // variables,
     })
     const product = data.site?.route?.node
 

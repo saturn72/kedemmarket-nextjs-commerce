@@ -91,7 +91,7 @@ const CartItem = ({
               className={s.productImage}
               width={64}
               height={64}
-              src={item.variant.image?.url || placeholderImg}
+              src={item.variant.image?.src || placeholderImg}
               alt={item.variant.image?.alt || 'Product Image'}
             />
           </Link>

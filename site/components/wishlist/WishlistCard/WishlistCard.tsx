@@ -66,7 +66,7 @@ const WishlistCard: React.FC<{
         <Image
           width={230}
           height={230}
-          src={product.images[0]?.url || placeholderImg}
+          src={product.images[0]?.src || placeholderImg}
           alt={product.images[0]?.alt || 'Product Image'}
         />
       </div>

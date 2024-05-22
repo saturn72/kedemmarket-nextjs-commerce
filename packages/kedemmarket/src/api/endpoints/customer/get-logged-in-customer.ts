@@ -1,22 +1,18 @@
 import type { CustomerEndpoint } from '.'
 import { CommerceAPIError } from '@vercel/commerce/api/utils/errors'
 
-export type Customer = NonNullable<GetLoggedInCustomerQuery['customer']>
+export type Customer = NonNullable<{ [key: string]: any }>
 
 const getLoggedInCustomer: CustomerEndpoint['handlers']['getLoggedInCustomer'] =
   async ({ req, config }) => {
     const token = req.cookies.get(config.customerCookie)?.value
 
     if (token) {
-      const { data } = await config.storeApiFetch<GetLoggedInCustomerQuery>(
-        getLoggedInCustomerQuery,
-        undefined,
-        {
-          headers: {
-            cookie: `${config.customerCookie}=${token}`,
-          },
-        }
-      )
+      const { data } = await config.fetch<Customer>('./api/customer', {
+        headers: {
+          cookie: `${config.customerCookie}=${token}`,
+        },
+      })
       const { customer } = data
 
       if (!customer) {

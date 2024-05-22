@@ -1,4 +1,4 @@
-export default {
+const routes = {
   uris: {
     account: '/account',
     home: '/',
@@ -6,3 +6,4 @@ export default {
     store: '/',
   },
 }
+export default routes

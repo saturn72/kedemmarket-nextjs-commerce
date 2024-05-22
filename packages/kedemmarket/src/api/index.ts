@@ -3,7 +3,6 @@ import {
   CommerceAPIConfig,
   getCommerceApi as commerceApi,
 } from '@vercel/commerce/api'
-import createFetchGraphqlApi from './utils/fetch-graphql-api'
 import createFetchStoreApi from './utils/fetch-store-api'
 
 import type { CartAPI } from './endpoints/cart'
@@ -35,7 +34,7 @@ export interface KedemMarketConfig extends CommerceAPIConfig {
   storeChannelId?: string
   storeUrl?: string
   storeHash?: string
-  storeApiFetch<T>(
+  fetch<T>(
     endpoint: string,
     options?: {
       method?: string
@@ -65,15 +64,14 @@ const config: KedemMarketConfig = {
   commerceUrl: apiUrl,
   apiToken: apiUrl,
   customerCookie: 'SHOP_TOKEN',
-  cartCookie: process.env.KEDEMMARKET_CART_COOKIE ?? 'bc_cartId',
+  cartCookie: process.env.KEDEMMARKET_CART_COOKIE ?? 'km_cartId',
   cartCookieMaxAge: ONE_DAY * 30,
-  fetch: createFetchGraphqlApi(() => getCommerceApi().getConfig()),
   applyLocale: true,
   // REST API only
   apiUrl: apiUrl,
   clientId: clientId,
   clientSecret: clientSecret,
-  storeApiFetch: createFetchStoreApi(() => getCommerceApi().getConfig()),
+  fetch: createFetchStoreApi(() => getCommerceApi().getConfig()),
 }
 
 const operations = {

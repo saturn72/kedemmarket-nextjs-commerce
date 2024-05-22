@@ -8,19 +8,9 @@ import type { RecursivePartial, RecursiveRequired } from '../utils/types'
 import filterEdges from '../utils/filter-edges'
 import { KedemMarketConfig, Provider } from '..'
 
-export const getAllProductPathsQuery = /* GraphQL */ `
-  query getAllProductPaths($first: Int = 100) {
-    site {
-      products(first: $first) {
-        edges {
-          node {
-            path
-          }
-        }
-      }
-    }
-  }
-`
+export type ProductSlug = {
+  data: string
+}
 
 export default function getAllProductPathsOperation({
   commerce,
@@ -40,7 +30,7 @@ export default function getAllProductPathsOperation({
   ): Promise<T['data']>
 
   async function getAllProductPaths<T extends GetAllProductPathsOperation>({
-    query = getAllProductPathsQuery,
+    query = '',
     variables,
     config,
   }: {
@@ -48,19 +38,18 @@ export default function getAllProductPathsOperation({
     variables?: T['variables']
     config?: KedemMarketConfig
   } = {}): Promise<T['data']> {
+    throw new Error('not implemented')
     config = commerce.getConfig(config)
-    // RecursivePartial forces the method to check for every prop in the data, which is
-    // required in case there's a custom `query`
-    const { data } = await config.storeApiFetch<
-      RecursivePartial<GetAllProductPathsQuery>
-    >(query, { variables })
-    const products = data.site?.products?.edges
+    // // RecursivePartial forces the method to check for every prop in the data, which is
+    // // required in case there's a custom `query`
+    // const { data } = await config.fetch<ProductSlug>(query, { variables })
+    // const products = data.site?.products?.edges
 
-    return {
-      products: filterEdges(products as RecursiveRequired<typeof products>).map(
-        ({ node }) => node
-      ),
-    }
+    // return {
+    //   products: filterEdges(products as RecursiveRequired<typeof products>).map(
+    //     ({ node }) => node
+    //   ),
+    // }
   }
   return getAllProductPaths
 }

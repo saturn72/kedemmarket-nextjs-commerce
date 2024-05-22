@@ -12,8 +12,8 @@ const fetchStoreApi =
     }
   ): Promise<T> => {
     return Promise.resolve({} as T)
-    throw new Error('not implemented')
     console.log('wwwwwwwww')
+    throw new Error('not implemented')
 
     const config = getConfig()
     console.log('ssssssssssssss', config.apiUrl)

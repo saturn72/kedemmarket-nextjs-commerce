@@ -9,7 +9,7 @@ import { CartItem } from '@components/cart'
 import { useUI } from '@components/ui/context'
 import t from 'locale'
 import routes from '@components/common/routes'
-import { Button } from '@mui/material'
+import { Button } from '@mui/joy'
 
 export async function getStaticProps({
   preview,
@@ -63,7 +63,7 @@ export default function Cart() {
             </h2>
             <p className="text-accent-6 px-10 text-center pt-2">
               <Button
-                variant='contained'
+                variant='solid'
                 href={routes.uris.store}
               >
                 {t('backToStore')}
@@ -173,17 +173,26 @@ export default function Cart() {
           <div className="flex flex-row justify-end">
             <div className="w-full lg:w-72">
               {isEmpty ? (
-                <Button href="/" Component="a" width="100%">
+                <Button
+                  href="/"
+                  //Component="a"
+                  fullWidth
+                >
                   Continue Shopping
                 </Button>
               ) : (
                 <>
                   {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
-                    <Button Component="a" width="100%" onClick={goToCheckout}>
+                    <Button
+                      // Component="a"
+                      fullWidth onClick={goToCheckout}>
                       Proceed to Checkout ({total})
                     </Button>
                   ) : (
-                    <Button href="/checkout" Component="a" width="100%">
+                    <Button
+                      href="/checkout"
+                      // Component="a"
+                      fullWidth>
                       Proceed to Checkout
                     </Button>
                   )}

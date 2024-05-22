@@ -7,7 +7,7 @@ async function getCustomerId({
   customerToken: string
   config: KedemMarketConfig
 }): Promise<string | undefined> {
-  const customer = await config.storeApiFetch<Customer>('customer', {
+  const customer = await config.fetch<any>('customer', {
     headers: {
       cookie: `${config.customerCookie}=${customerToken}`,
     },
